@@ -16,7 +16,7 @@
 
         echo "<ul class='dropdown-menu'><center><a onClick='location.reload(false);'></a></center>";
       echo " <center>
-              <a href='notifiacion_php.php' '><button type='button' class='btn btn-link'>Ver Notificaciones</button></a></center>
+              <a href='../vista/vernotificaciones_director.php' '><button type='button' class='btn btn-link'>Ver Notificaciones</button></a></center>
             </ul> </td></tr>";
   
 
