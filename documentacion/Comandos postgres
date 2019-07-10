@@ -1,0 +1,8 @@
+bajar bd
+
+pg_dump -U username -W -h host basename > basename.sql
+
+
+subir bd
+
+psql -U username -W -h host basename < basename.sql
