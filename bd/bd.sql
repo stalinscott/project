@@ -132,6 +132,32 @@ CREATE SEQUENCE public.h_salida_id_salida_seq
 ALTER TABLE public.h_salida_id_salida_seq OWNER TO postgres;
 
 --
+-- Name: hora_id_hora_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.hora_id_hora_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.hora_id_hora_seq OWNER TO postgres;
+
+--
+-- Name: hora; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.hora (
+    id_hora integer DEFAULT nextval('public.hora_id_hora_seq'::regclass) NOT NULL,
+    hora character varying(15)
+);
+
+
+ALTER TABLE public.hora OWNER TO postgres;
+
+--
 -- Name: horario_id_horario_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -268,11 +294,12 @@ ALTER TABLE public.justificacion_id_justificacion_seq OWNER TO postgres;
 
 CREATE TABLE public.justificacion (
     id_justificacion integer DEFAULT nextval('public.justificacion_id_justificacion_seq'::regclass) NOT NULL,
-    tipo_justificacion integer,
     comentario character varying(15),
-    dia integer,
+    fecha_creacion character varying(12),
     id_tipo_justificacion integer,
-    id_ausencia integer
+    fecha_justificar character varying(15),
+    cedper integer,
+    status character varying(10)
 );
 
 
@@ -433,10 +460,10 @@ ALTER TABLE public.tipo_justificacion OWNER TO postgres;
 
 COPY public.administrador (cedper, usuario, clave, depuniadm, ofiuniadm, minorguniadm, uniuniadm, prouniadm, id_rol) FROM stdin;
 22746550	3030	123456	0	1	103	1	0	1
-2963906	1	123	0	0	0	0	0	1
 25216223	2	123	0	0	0	0	0	4
 4362110	3	123	0	0	0	0	0	3
 6436797	4	123	0	0	0	0	0	2
+2963906	1	1	0	0	0	0	0	3
 \.
 
 
@@ -543,10 +570,77 @@ SELECT pg_catalog.setval('public.h_salida_id_salida_seq', 1, false);
 
 
 --
+-- Data for Name: hora; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.hora (id_hora, hora) FROM stdin;
+1	Libre
+2	1:00am
+3	1:30am
+4	2:00am
+5	2:30am
+6	3:00am
+7	3:30am
+8	4:00am
+9	4:30am
+10	5:00am
+11	5:30am
+12	6:00am
+13	6:30am
+14	7:00am
+15	7:30am
+16	8:00am
+17	8:30am
+18	9:00am
+19	9:30am
+20	10:00am
+21	10:30am
+22	11:00am
+23	11:30am
+24	12:00pm
+25	12:30pm
+26	1:00pm
+27	1:30am
+28	2:00pm
+29	2:30pm
+30	3:00pm
+31	3:30pm
+32	4:00pm
+33	4:30pm
+34	5:00pm
+35	5:30pm
+36	6:00pm
+37	6:30pm
+38	7:00pm
+39	7:30pm
+40	8:00pm
+41	8:30pm
+42	9:00pm
+43	9:30pm
+44	10:00pm
+45	10:30pm
+46	11:00pm
+47	11:30pm
+48	12:00am
+49	12:30am
+\.
+
+
+--
+-- Name: hora_id_hora_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.hora_id_hora_seq', 49, true);
+
+
+--
 -- Data for Name: horario; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public.horario (id_horario, depuniadm, ofiuniadm, minorguniadm, uniuniadm, prouniadm, lunes_e, lunes_s, martes_e, martes_s, miercoles_e, miercoles_s, jueves_e, jueves_s, viernes_e, viernes_s, sabado_e, sabado_s, domingo_e, domingo_s, deshor) FROM stdin;
+11	0	0	0	0	0	Libre	Libre	Libre	Libre	Libre	Libre	Libre	Libre	Libre	Libre	Libre	Libre	Libre	Libre	ss
+12	0	0	0	0	0	Libre	Libre	Libre	Libre	Libre	Libre	Libre	Libre	Libre	Libre	Libre	Libre	Libre	Libre	dasd
+2	0	0	0	0	0	1:30am	6:00am	Libre	Libre	Libre	Libre	Libre	Libre	Libre	Libre	Libre	Libre	Libre	Libre	ddd
 \.
 
 
@@ -554,7 +648,7 @@ COPY public.horario (id_horario, depuniadm, ofiuniadm, minorguniadm, uniuniadm, 
 -- Name: horario_id_horario_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.horario_id_horario_seq', 1, false);
+SELECT pg_catalog.setval('public.horario_id_horario_seq', 13, true);
 
 
 --
@@ -600,7 +694,8 @@ SELECT pg_catalog.setval('public.jornada_salida_id_salida_seq', 1, false);
 -- Data for Name: justificacion; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.justificacion (id_justificacion, tipo_justificacion, comentario, dia, id_tipo_justificacion, id_ausencia) FROM stdin;
+COPY public.justificacion (id_justificacion, comentario, fecha_creacion, id_tipo_justificacion, fecha_justificar, cedper, status) FROM stdin;
+1	 123	09/07/2019	1	01/07/2019	2963906	Si
 \.
 
 
@@ -608,7 +703,7 @@ COPY public.justificacion (id_justificacion, tipo_justificacion, comentario, dia
 -- Name: justificacion_id_justificacion_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.justificacion_id_justificacion_seq', 1, false);
+SELECT pg_catalog.setval('public.justificacion_id_justificacion_seq', 4, true);
 
 
 --
@@ -1370,6 +1465,11 @@ COPY public.sno_unidadadm (depuniadm, ofiuniadm, minorguniadm, uniuniadm, prouni
 --
 
 COPY public.tipo_justificacion (id_tipo_justificacion, nom_justificacion) FROM stdin;
+1	Medica
+2	Juridica
+3	Bancaria
+4	Muerte de un familiar
+5	Actividad Academica
 \.
 
 
@@ -1377,7 +1477,7 @@ COPY public.tipo_justificacion (id_tipo_justificacion, nom_justificacion) FROM s
 -- Name: tipo_justificacion_id_tipo_justificacion_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.tipo_justificacion_id_tipo_justificacion_seq', 1, false);
+SELECT pg_catalog.setval('public.tipo_justificacion_id_tipo_justificacion_seq', 5, true);
 
 
 --
@@ -1474,14 +1574,6 @@ ALTER TABLE ONLY public.administrador
 
 ALTER TABLE ONLY public.empleado
     ADD CONSTRAINT empleado_cedula_fkey FOREIGN KEY (cedper) REFERENCES public.personal(cedper);
-
-
---
--- Name: justificacion_id_ausencia_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.justificacion
-    ADD CONSTRAINT justificacion_id_ausencia_fkey FOREIGN KEY (id_ausencia) REFERENCES public.ausencia(id_ausencia);
 
 
 --
