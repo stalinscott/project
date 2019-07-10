@@ -1,0 +1,87 @@
+<div class="row">
+<div class="col-xs-12 text-left">
+		<br>
+		</div>
+</div>
+		<div class="row">
+		<div class="col-sm-3 text-left">
+<div class="sidebar-nav">
+      <div class="navbar navbar-default" role="navigation">
+        <div class="navbar-collapse collapse sidebar-navbar-collapse">
+          <ul class="nav navbar-nav">
+          <li ><a href="../vista/asistencia_root.php"><img src="../images/1.2.png" alt="#"/> Asistencia</a></li>
+           <li class="active"><a href="../vista/crear_horario.php"> <img src="../images/1.1.png" alt="#"/> Horario</a></li>
+          <li><a href="../vista/justificar_dia_root.php"> <img src="../images/1.2.png" alt="#"/> Justificar</a></li>
+            <li><a href="consultar_asistencia.php"> <img src="../images/1.2.png" alt="#"/> Consultar</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-9 text-left">
+      <div id="login"> 
+  <div class="container-fluid">
+<br>
+      <?php
+    include_once('../includes/database.php');
+      $id=$_GET["id"];
+   $decodificado = base64_decode($id);
+		$ok = listarPersonas( $conexion, $decodificado);
+        function listarPersonas( $conexion, $decodificado )
+        {
+            $sql = "SELECT id_horario, depuniadm, ofiuniadm, minorguniadm, uniuniadm, prouniadm, 
+       lunes_e, lunes_s, martes_e, martes_s, miercoles_e, miercoles_s, 
+       jueves_e, jueves_s, viernes_e, viernes_s, sabado_e, sabado_s, 
+       domingo_e, domingo_s, deshor
+  FROM public.horario WHERE horario.id_horario='$decodificado'";
+            $ok = true;
+            // Ejecutar la consulta:
+             $rs = pg_query( $conexion, $sql );
+            if( $obj = pg_fetch_object($rs))
+            {
+            	echo "<br><div class='panel panel-danger'>
+      <div class='panel-heading'>Borrar Horario <img align='right' src='../images/revisar.png' class='img-circle' alt='Cinque Terre'> </div>
+      </div>  ";
+      echo "<div class='container-fluid'>
+        <table class='table'>
+        <tr>
+                                      <th>Horario</th>
+                                        <th>Lunes</th>
+                                        <th>Martes</th>
+                                     <th>Miercoles</th>
+                                     <th>Jueves</th>
+                                     <th>Viernes</th>
+                                     <th>Sabado</th>
+                                     <th>Domingo</th>
+                            </tr>";
+     echo "
+            
+            
+            <tr class='table-primary'>
+            <td>".$obj->deshor." </td>
+                <td><b>Entrada:</b><br>".$obj->lunes_e." <br> <b>Salida:</b><br>".$obj->lunes_s." </td>
+               <td><b>Entrada:</b><br>".$obj->martes_e."<br> <b>Salida:</b><br>".$obj->martes_s." </td>
+               <td><b>Entrada:</b><br>".$obj->miercoles_e."<br> <b>Salida:</b><br>".$obj->miercoles_s." </td>
+               <td><b>Entrada:</b><br>".$obj->jueves_e."<br> <b>Salida:</b><br>".$obj->jueves_s." </td>
+               <td><b>Entrada:</b><br>".$obj->viernes_e."<br><b>Salida:</b><br>".$obj->viernes_s." </td>
+               <td><b>Entrada:</b><br>".$obj->sabado_e."<br><b>Salida:</b><br>".$obj->sabado_s." </td>
+               <td><b>Entrada:</b><br>".$obj->domingo_e."<br><b>Salida:</b><br>".$obj->domingo_s." </td>
+               </tr>";
+               echo "</table><div class='well well-sm'><center>¿Seguro desea eliminar este horario?</Center></div>
+      			<center><a  href='../vista/postborrarhorario.php?id=".$codificado = base64_encode($obj->id_horario)."' class='btn btn-success' role='button'>Si</a>
+               <a  href='../vista/consultar_horario_root.php' class='btn btn-danger role='button'>No</a></center></div>";
+            	}
+            else
+                $ok = false;
+            return $ok;
+        }
+            ?>
+    </div>
+    </div>
+		</div>
+		
+
+</body>
+</html>
+
+
