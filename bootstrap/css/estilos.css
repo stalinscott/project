@@ -1,0 +1,14 @@
+
+.registros{
+	margin:auto;
+	width:1000px;
+	margin-top:20px;
+	border:1px solid #6F96DF;
+	height:auto;
+	padding:10px;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+    margin-top: 0;
+ }

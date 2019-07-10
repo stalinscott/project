@@ -1,0 +1,5 @@
+bajar:
+pg_dump -U postgres -W -h localhost project > bd.sql
+
+subir:
+psql -U postgres -W -h localhost project < bd.sql
