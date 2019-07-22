@@ -59,7 +59,7 @@ echo"<div class='form-group'>
 ";
 
                echo "</table><br><div class='well well-sm'><center>¿Seguro desea eliminar este empleado?</Center></div>
-      			<center><a  href='../talento/postborrarempleado.php?id=".$codificado = base64_encode($obj->cedper)."' class='btn btn-success' role='button'>Si</a>
+      			<center><a  href='../vista/postborrarempleado_talento.php?id=".$codificado = base64_encode($obj->cedper)."' class='btn btn-success' role='button'>Si</a>
                <a  href='../vista/consultar_empleado_talento.php' class='btn btn-danger role='button'>No</a></center></div>";
                echo "</div>";
             	}

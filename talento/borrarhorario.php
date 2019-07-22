@@ -18,15 +18,15 @@
       </div>
     </div>
   </div>
-  <div class="col-sm-9 text-left">
+   <div class="col-sm-9 text-left">
       <div id="login"> 
   <div class="container-fluid">
 <br>
       <?php
-  include_once('../includes/database.php');
-    	 $id=$_GET["id"];
+    include_once('../includes/database.php');
+      $id=$_GET["id"];
    $decodificado = base64_decode($id);
-		$ok = listarPersonas( $conexion, $decodificado);
+    $ok = listarPersonas( $conexion, $decodificado);
         function listarPersonas( $conexion, $decodificado )
         {
             $sql = "SELECT id_horario, depuniadm, ofiuniadm, minorguniadm, uniuniadm, prouniadm, 
@@ -39,7 +39,7 @@
              $rs = pg_query( $conexion, $sql );
             if( $obj = pg_fetch_object($rs))
             {
-            	echo "<br><div class='panel panel-danger'>
+              echo "<br><div class='panel panel-danger'>
       <div class='panel-heading'>Borrar Horario <img align='right' src='../images/revisar.png' class='img-circle' alt='Cinque Terre'> </div>
       </div>  ";
       echo "<div class='container-fluid'>
@@ -59,18 +59,18 @@
             
             <tr class='table-primary'>
             <td>".$obj->deshor." </td>
-                <td>Entrada: ".$obj->lunes_e." <br> Salida: ".$obj->lunes_s." </td>
-                <td>Entrada: ".$obj->martes_e." <br> Salida: ".$obj->martes_s." </td>
-                <td>Entrada: ".$obj->miercoles_e." <br> Salida: ".$obj->miercoles_s."</td>
-               <td>Entrada: ".$obj->jueves_e." <br> Salida: ".$obj->jueves_s." </td>
-               <td>Entrada: ".$obj->viernes_e." <br> Salida: ".$obj->viernes_s." </td>
-               <td>Entrada: ".$obj->sabado_e." <br> Salida: ".$obj->sabado_s." </td>
-               <td>Entrada: ".$obj->domingo_e." <br> Salida: ".$obj->domingo_s." </td>
+                <td><b>Entrada:</b><br>".$obj->lunes_e." <br> <b>Salida:</b><br>".$obj->lunes_s." </td>
+               <td><b>Entrada:</b><br>".$obj->martes_e."<br> <b>Salida:</b><br>".$obj->martes_s." </td>
+               <td><b>Entrada:</b><br>".$obj->miercoles_e."<br> <b>Salida:</b><br>".$obj->miercoles_s." </td>
+               <td><b>Entrada:</b><br>".$obj->jueves_e."<br> <b>Salida:</b><br>".$obj->jueves_s." </td>
+               <td><b>Entrada:</b><br>".$obj->viernes_e."<br><b>Salida:</b><br>".$obj->viernes_s." </td>
+               <td><b>Entrada:</b><br>".$obj->sabado_e."<br><b>Salida:</b><br>".$obj->sabado_s." </td>
+               <td><b>Entrada:</b><br>".$obj->domingo_e."<br><b>Salida:</b><br>".$obj->domingo_s." </td>
                </tr>";
                echo "</table><div class='well well-sm'><center>¿Seguro desea eliminar este horario?</Center></div>
-      			<center><a  href='../vista/postborrarhorario_talento.php?id=".$codificado = base64_encode($objFila->id_horario)."' class='btn btn-success' role='button'>Si</a>
+            <center><a  href='../vista/postborrarhorario.php?id=".$codificado = base64_encode($obj->id_horario)."' class='btn btn-success' role='button'>Si</a>
                <a  href='../vista/consultar_horario_talento.php' class='btn btn-danger role='button'>No</a></center></div>";
-            	}
+              }
             else
                 $ok = false;
             return $ok;
@@ -78,10 +78,8 @@
             ?>
     </div>
     </div>
-		</div>
-		
+    </div>
+    
 
 </body>
 </html>
-
-

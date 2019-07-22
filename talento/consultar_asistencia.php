@@ -19,7 +19,7 @@
       </div>
     </div>
   </div>
-  <div class="col-sm-9 text-left">
+ <div class="col-sm-9 text-left">
   <div class="panel-heading">
     <h2  align="center">Consultar Asistencias</h2>
   </div>
@@ -34,41 +34,40 @@
   <?php
   include_once('../includes/database.php');
   ini_set("display_errors", "on");
+  $fecha= date ("d/m/Y");
   $sql = "SELECT cedper, nombres, apellido FROM public.personal order by cedper asc";
   $ok = true;
   $rs = pg_query( $conexion, $sql );
   while( $objFila = pg_fetch_object($rs) ){
   echo '<option value="'.$objFila->cedper.'">'.$objFila->cedper.'-'.$objFila->nombres.' '.$objFila->apellido.'</option>';
   };
+
   ?>
   </select>
 </div>
 <br>
 <br>
+
 <label for="cedper" class="col-lg-3 control-label">
                            Rango de Fecha:
                         </label>
 <div class="col-lg-6 text-center">
-
- 
+            <?  $fecha= date ("d/m/Y");?>
+            <input id="fecha_actual" type="hidden"  placeholder="fecha_actual" name="fecha_actual" required="" value="<?php echo $fecha; ?> ">
             <div class="panel panel-default">
              <div class="panel-body">
-            <div class="form-group">
                    Desde:<input id="loginemail" type="text" class="tcal" name="email" required=""  onkeypress="return validarnumeros(event)">
-            </div>
-             <div class="form-group">
-                Hasta:
-                    <input id="loginpassword" type="text" class="tcal" name="password" required=""  onkeypress="return validarnumeros(event)">
-            </div>
+            
+                <br>Hasta: <input id="loginpassword" type="text" class="tcal" name="password" required=""  onkeypress="return validarnumeros(event)">
+           
             </div>
              </div>
             <br>
             <center>
-            <div class="form-group">
+  
       <span >
           <button type="submit"  class="btn btn-primary " type="button" onclick="loadLog()">Consultar</button>
       </span>
-        </div>
         </center>
              
         </div>  
@@ -78,7 +77,7 @@
          
 
      
-</div>
+
 
 <script language="javascript">   
 function validarnumeros(e){
@@ -107,6 +106,7 @@ function loadLog() {
     var nombre= document.getElementById('loginemail').value;
 var clave= document.getElementById('loginpassword').value;
 var cedper= document.getElementById('cedper').value;
+var fecha_actual= document.getElementById('fecha_actual').value;
 if (nombre==0)
 
  {
@@ -120,6 +120,22 @@ if (nombre==0)
 
  {
     alert("Compo Hasta esta vacio")
+    document.login.loginpassword.focus()
+                document.login.loginpassword.value = ""
+    return 0;
+  }
+            if (clave>fecha_actual)
+
+ {
+    alert("No puede visualizar fechas futuras")
+    document.login.loginpassword.focus()
+                document.login.loginpassword.value = ""
+    return 0;
+  }
+              if (nombre>fecha_actual)
+
+ {
+    alert("No puede visualizar fechas futuras")
     document.login.loginpassword.focus()
                 document.login.loginpassword.value = ""
     return 0;
@@ -139,9 +155,9 @@ if (nombre==0)
     document.getElementById("login").innerHTML = xhttp.responseText;
     }
   };
-    xhttp.open("POST", "../talento/postconsultarasistencia.php", true);
+    xhttp.open("POST", "../root/postconsultarasistencia.php", true);
   xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-  xhttp.send("email="+nombre+"&password="+clave+"&cedper="+cedper+"");
+  xhttp.send("email="+nombre+"&password="+clave+"&cedper="+cedper+"&fecha_actual="+fecha_actual+"");
 }
 </script>
 

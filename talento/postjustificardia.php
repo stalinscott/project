@@ -18,32 +18,40 @@
       </div>
     </div>
   </div>
-  <div class="col-sm-9 text-left">
-      <div id="login"> 
+ <div class="col-sm-9 text-left">
+  <div id="login"> 
   <div class="container-fluid">
+<br>
+<div class="col-sm-9">
+
 <?php 
   
-if (isset($_POST))
+if (isset($_GET))
 {
-    
-    
-    
-
-}
-
-include_once('../includes/database.php');
-function justificardia($conexion, $decodificado, $decodificado2  )
+  include_once('../includes/database.php');
+function insertarHorario( $conexion, $decodificado, $decodificado1, $decodificado2, $decodificado3, $fecha)
   {
-  $sql = "INSERT INTO public.ausencia(cedper, fecha_ausencia)
-    VALUES ('$decodificado', '$decodificado2');
-";
+    
+    $sql = "INSERT INTO public.justificacion(comentario, fecha_creacion, id_tipo_justificacion, fecha_justificar, cedper, status)
+    VALUES ('$decodificado3', '$fecha', '$decodificado2', '$decodificado1', '$decodificado' , 'Si');";
+
     // Ejecutamos la consulta (se devolverá true o false):
     return pg_query( $conexion, $sql );
   }
-  $id=$_GET["id"];
-$fecha=$_GET["fecha"];
-$decodificado = base64_decode($id);
-$decodificado2 = base64_decode($fecha);
-  $ok = justificardia( $conexion, $decodificado, $decodificado2 );
-
+              $cedper=$_GET["cedper"];
+$t=$_GET["t"];
+$f=$_GET["f"];
+$c=$_GET["c"];
+$decodificado = base64_decode($cedper);
+$decodificado1 = base64_decode($f);
+$decodificado2 = base64_decode($t);
+$decodificado3 = base64_decode($c);
   
+   $ok = insertarHorario( $conexion, $decodificado, $decodificado1, $decodificado2, $decodificado3, $fecha );
+
+    echo "<br><div class='panel panel-success'>
+      <div class='panel-heading'>Ha justificado el dia con exito.<img align='right' src='../images/marcar.png' class='img-circle' alt='Cinque Terre'> </div>
+      </div>  ";
+echo "</table><a href='../vista/justificar_dia_talento.php' class='btn btn-info' role='button'>Volver</a></div>";
+}
+
