@@ -31,19 +31,20 @@ if (isset($_POST))
 }
 
 include_once('../includes/database.php');
-function borrarhorario( $conexion, $id )
+ $id=$_GET["id"];
+        $decodificado = base64_decode($id);
+  $ok = borrarempleado( $conexion, $decodificado );
+function borrarempleado( $conexion, $decodificado )
   {
    $sql = "DELETE FROM public.empleado";
 
     // Si 'id' es diferente de 'null' sólo se borra la persona con el 'id' especificado:
-    if( $id != null )
-      $sql .= " WHERE cedper=".$id;
+    if( $decodificado != null )
+      $sql .= " WHERE cedper=".$decodificado;
 
     // Ejecutamos la consulta (se devolverá true o false):
     return pg_query( $conexion, $sql );
   }
-$id=$_GET["id"];
-  $ok = borrarhorario( $conexion, $id );
   
   if( $ok == false )
     echo "<br><div class='panel panel-danger'>

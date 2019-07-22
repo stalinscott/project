@@ -28,8 +28,9 @@
       </div> 
       <?php
   include_once('../includes/database.php');
+  $id=$_GET["id"];
   $decodificado = base64_decode($id);
-    	$id=$_GET["id"];
+    	
 		$ok = listarPersonas( $conexion, $decodificado);
         function listarPersonas( $conexion, $decodificado )
         {

@@ -23,8 +23,9 @@
 <br>
       <?php
       include_once('../includes/database.php');
-    	$decodificado = base64_decode($id);
       $id=$_GET["id"];
+      $decodificado = base64_decode($id);
+      
 		$ok = listarPersonas( $conexion, $decodificado);
         function listarPersonas( $conexion, $decodificado )
         {
@@ -55,7 +56,7 @@ echo"
 <input class='form-control' id='cedper' type='cedper'  placeholder='Cedula de identidad' name='cedper' required='' value='".$obj->apellido."' disabled>               
 ";
                echo "<br><div class='well well-sm'><center>¿Seguro desea eliminar este empleado?</Center></div>
-      			<center><a  href='../vista/postborrarempleado.php?id=".$codificado = base64_encode($obj->id_cedper)."' class='btn btn-success' role='button'>Si</a>
+      			<center><a  href='../vista/postborrarempleado_root.php?id=".$codificado = base64_encode($obj->cedper)."' class='btn btn-success' role='button'>Si</a>
                <a  href='../vista/consultar_empleado.php' class='btn btn-danger role='button'>No</a></center></div>";
                echo "</div>";
             	}

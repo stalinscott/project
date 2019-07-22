@@ -28,6 +28,8 @@ if (isset($_POST))
 }
 
 include_once('../includes/database.php');
+    $id=$_GET["id"];
+   $decodificado = base64_decode($id);
 function borrarhorario( $conexion, $decodificado )
   {
    $sql = "DELETE FROM horario";
@@ -40,8 +42,7 @@ function borrarhorario( $conexion, $decodificado )
     return pg_query( $conexion, $sql );
   }
   
-      $id=$_GET["id"];
-   $decodificado = base64_decode($id);
+  
   $ok = borrarhorario( $conexion, $decodificado );
   
   if( $ok == false )

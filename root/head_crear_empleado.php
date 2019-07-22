@@ -1,5 +1,10 @@
 <?php 
-	session_start();
+date_default_timezone_set('America/La_Paz');
+$hora= date ("g:ia");
+$fecha= date ("d/m/Y");
+$dia= date ("N");
+
+    session_start();
                     $cedper = $_SESSION['cedper'];
                     $usuario = $_SESSION['usuario'];
                     $depuniadm = $_SESSION['depuniadm'];

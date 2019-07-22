@@ -50,6 +50,21 @@
 </div>
 <br>
 <br>
+<label for="cedper" class="col-lg-3 control-label">
+             Dia a Justificar:
+ </label>
+<div class="col-lg-6 text-center">
+            <div class="panel panel-default">
+             <div class="panel-body">
+                   <input id="loginemail" type="text" class="tcal" name="email" required=""  onkeypress="return validarnumeros(event)">
+            
+            </div>
+             </div>
+        </div>
+<br>
+        <br>
+         <br>
+         <br>
 <label for="tipo" class="col-lg-3 control-label">
              Tipo de justificacion:
  </label>
@@ -70,31 +85,18 @@
   </select>
   
 </div>
-<br>
-<br>
+        
+        <br>
+        <br>
 <label for="comentario" class="col-lg-3 control-label">
               Comentario:
  </label>
                    <div class="col-lg-6">
-<input class="form-control" id="comentario" name="comentario" type="text" placeholder="" value=" ">
+<textarea class="form-control" rows="1" id="comentario" name="comentario" type="text" placeholder="" value=" "></textarea>
   
 </div>
 <br>
-<br>
-
-<label for="cedper" class="col-lg-3 control-label">
-             Dia a Justificar:
- </label>
-<div class="col-lg-6 text-center">
-            <div class="panel panel-default">
-             <div class="panel-body">
-            <div class="form-group">
-                   <input id="loginemail" type="text" class="tcal" name="email" required=""  onkeypress="return validarnumeros(event)">
-            </div>
-            </div>
-             </div>
-            <br>
-        </div> 
+<br> 
         <br>
         </div>
         </div>

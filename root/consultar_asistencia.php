@@ -132,6 +132,14 @@ if (nombre==0)
                 document.login.loginpassword.value = ""
     return 0;
   }
+              if (nombre>fecha_actual)
+
+ {
+    alert("No puede visualizar fechas futuras")
+    document.login.loginpassword.focus()
+                document.login.loginpassword.value = ""
+    return 0;
+  }
   if (nombre>clave)
 
  {

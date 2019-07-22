@@ -57,7 +57,7 @@
  <?php
   include_once('../includes/database.php');
   ini_set("display_errors", "on");
-  $sql = "SELECT id_rol, nom_rol FROM public.rol WHERE id_rol!='5' AND id_rol!='6' And id_rol!='".$_SESSION['id_rol']."';";
+  $sql = "SELECT id_rol, nom_rol FROM public.rol WHERE id_rol!='5' AND id_rol!='6';";
   $ok = true;
   $rs = pg_query( $conexion, $sql );
   while( $objFila = pg_fetch_object($rs) ){
@@ -70,7 +70,7 @@
   <?php
   include_once('../includes/database.php');
   ini_set("display_errors", "on");
-  $sql = "SELECT id_rol, nom_rol FROM public.rol WHERE id_rol!='5' AND id_rol!='6' And id_rol!='".$_SESSION['id_rol']."';";
+  $sql = "SELECT id_rol, nom_rol FROM public.rol WHERE id_rol!='5' AND id_rol!='6';";
   $ok = true;
   $rs = pg_query( $conexion, $sql );
   while( $objFila = pg_fetch_object($rs) ){

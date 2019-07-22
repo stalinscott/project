@@ -16,8 +16,6 @@ $dia= date ("N");
                     $nom_rol =$_SESSION['nom_rol'];
                     $nombres = $_SESSION['nombres'];
                     $apellido = $_SESSION['apellido'];
-                    $id_horario = $_GET['id_horario'];
-                    $id = $_GET['id']; 
                 
 ?>
 <!doctype html>
@@ -26,7 +24,6 @@ $dia= date ("N");
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Sistema de Logueo</title>
-
       <link rel="stylesheet" href="../css/bootstrap.min.css">
   <script src="../js/jquery.min.js"></script>
   <script src="../js/bootstrap.min.js"></script>
