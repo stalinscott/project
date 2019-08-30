@@ -70,6 +70,12 @@ $pdf->Cell(50, 10, 'Fecha: '.date('d-m-Y').'', 0);
 $pdf->Ln(15);
 $pdf->SetFont('Arial', 'B', 11);
 $pdf->Cell(70, 8, '', 0);
+$sql = "";
+  $ok = true;
+  $productos = pg_query( $conexion, $sql );
+  while($productos2 = pg_fetch_array($productos)){
+    $pdf->Cell(15, 8, $productos2['h_entrada'], 0);
+    $pdf->Cell(80, 8,$productos2['h_salida'], 0);
     $pdf->Ln(8);
 $pdf->gaficoPDF(array('Asistencia'=>array($decodificado2,'red'),'Ausencia'=>array($decodificado3,'blue')),'Grafico',array(5,85,200,150),'Reporte de asistencia');
 $pdf->Output();
