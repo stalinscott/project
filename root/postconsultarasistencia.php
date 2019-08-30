@@ -48,10 +48,18 @@ AND sno_unidadadm.prouniadm=personal.prouniadm
       <div class='col-sm-12 form-group'>
    Departamento:<input class='form-control' id='cedper' type='cedper'  placeholder='Cedula de identidad' name='cedper' required='' value='$obj->desuniadm' disabled >
         </div>
+         <div class='col-sm-6 form-group'>
+   Desde:<input class='form-control' id='cedper' type='cedper'  placeholder='Cedula de identidad' name='cedper' required='' value='$id' disabled >
+        </div>
+         <div class='col-sm-6 form-group'>
+   Hasta:<input class='form-control' id='cedper' type='cedper'  placeholder='Cedula de identidad' name='cedper' required='' value='$fi' disabled >
+        </div>
        </div>
           ";
-         echo "<div class='col-sm-12 text-right'><a target='_blank' href='../vista/fpdf.php?id=<?php echo $codificado =
- base64_encode($cedper) ?>' class='btn btn-danger'>Exportar a PDF</a>        ";
+         echo "<div class='col-sm-12 text-right'><a target='_blank' href='../root/fpdf.php?id=".$codificado =
+ base64_encode($cedper)."&id2=".$codificado1 =
+ base64_encode($id)."&id3=".$codificado2 =
+ base64_encode($fi)."' class='btn btn-danger'>Exportar a PDF</a>        ";
 echo "<a href='../vista/consultar_asistencia.php' class='btn btn-info' role='button'>Volver</a> </div></div><br><br><br><br><br><br><br><br><br><br>";
                    
             }
@@ -83,7 +91,9 @@ echo "<a href='../vista/consultar_asistencia.php' class='btn btn-info' role='but
                </td></tr>";
 			}
 			else
-				echo "<br><br><br><br><br><br><br>No se encontraron Asistencias<br />";
+				echo "<br><br><br><div class='panel panel-danger'>
+			
+      <div class='panel-heading'>No se encontraron Asistencias<A HREF='../vista/consultar_asistencia.php' title='Modificar'><IMG align='right' SRC='../images/revisar.png' ALT='modificar'></A>";
 		}
 		else
 			$ok = false;

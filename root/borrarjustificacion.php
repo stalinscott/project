@@ -50,7 +50,7 @@
 echo"Aprobado:
 <input class='form-control' id='cedper' type='cedper'  placeholder='Cedula de identidad' name='cedper' required='' value='".$obj->status."' disabled>";
               echo "<br><div class='well well-sm'><center>¿Seguro desea eliminar esta justificacion?</Center></div>
-      			<center><a  href='../vista/postborrarjustificacion.php?id=".$codificado = base64_encode($obj->id_justificacion)."' class='btn btn-success' role='button'>Si</a>
+      			<center><a  href='../vista/postborrarjustificacion_root.php?id=".$codificado = base64_encode($obj->id_justificacion)."' class='btn btn-success' role='button'>Si</a>
                <a  href='../vista/consultar_justificaciones_root.php' class='btn btn-danger role='button'>No</a></center></div>";
                echo "</div>";
             	}

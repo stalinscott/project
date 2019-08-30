@@ -1,27 +1,23 @@
 <?php 
-
 if (isset($_POST))
 { 
            
 }
 include_once('../includes/database.php');
-		function listarHorario( $conexion, $codorg ){
+    function listarHorario( $conexion, $codorg ){
         list($depuniadm,$ofiuniadm,$minorguniadm,$uniuniadm,$prouniadm)= (explode('-',$_POST['sno_unidadadm']));
-		$sql = "  SELECT *
+    $sql = "  SELECT *
   FROM horario,sno_unidadadm WHERE horario.depuniadm='$depuniadm' 
   and horario.ofiuniadm='$ofiuniadm' 
   and horario.minorguniadm='$minorguniadm'
    and horario.uniuniadm='$uniuniadm' 
    and horario.prouniadm='$prouniadm' and sno_unidadadm.depuniadm=horario.depuniadm and sno_unidadadm.ofiuniadm=horario.ofiuniadm and sno_unidadadm.minorguniadm=horario.minorguniadm and sno_unidadadm.uniuniadm=horario.uniuniadm and sno_unidadadm.prouniadm=horario.prouniadm";
-
-		$ok = true;
-
-		// Ejecutar la consulta:
-		$rs = pg_query( $conexion, $sql );
-
-		if( $rs )
-		{
-			if( pg_num_rows($rs) > 0 )
+    $ok = true;
+    // Ejecutar la consulta:
+    $rs = pg_query( $conexion, $sql );
+    if( $rs )
+    {
+      if( pg_num_rows($rs) > 0 )
       {
         
         echo "<br><div class='container-fluid'>
@@ -37,13 +33,11 @@ include_once('../includes/database.php');
                                      <th>Domingo</th>
                                      <th>opciones</th>
                             </tr>";
-
         // Recorrer el resource y mostrar los datos:
         while( $objFila = pg_fetch_object($rs) )
           echo "
             <div class='container-fluid'>
             <tr class='table-primary'>
-
            <td>".$objFila->deshor." </td>
                 <td><b>Entrada:</b><br>".$objFila->lunes_e." <br> <b>Salida:</b><br>".$objFila->lunes_s." </td>
                <td><b>Entrada:</b><br>".$objFila->martes_e."<br> <b>Salida:</b><br>".$objFila->martes_s." </td>
@@ -63,18 +57,9 @@ include_once('../includes/database.php');
     }
     else
       $ok = false;
-
     return $ok;
   }
-	// Modificar la persona:
-	list($depuniadm,$ofiuniadm,$minorguniadm,$uniuniadm,$prouniadm)= (explode('-',$_POST['sno_unidadadm']));
-	$ok = listarHorario( $conexion, $sno_unidadadm );
-
-	
-
-
-
-
-
-
-
+  // Modificar la persona:
+  list($depuniadm,$ofiuniadm,$minorguniadm,$uniuniadm,$prouniadm)= (explode('-',$_POST['sno_unidadadm']));
+  $ok = listarHorario( $conexion, $sno_unidadadm );
+  
