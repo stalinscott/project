@@ -23,7 +23,7 @@
         <h2  align="center">Justificar Inasistencia</h2>
       </div>
       <ul class="nav nav-tabs">
-  <li ><a href="../vista/justificar_dia_root.php">Crear Justificar</a></li>
+  <li ><a href="../vista/justificar_dia_talento.php">Crear Justificar</a></li>
   <li class="active"><a href="../vista/consultar_justificaciones_talento.php">Consultar Justificaciones</a></li>
 </ul>
    <div id="login">        
@@ -47,10 +47,11 @@
   </select>
   
 </div>
-</div>
-        <span >
+<span >
           <button type="submit"  class="btn btn-primary " type="button" onclick="loadLog()">Consultar</button>
           </span>
+</div>
+        
             
         </div> 
         

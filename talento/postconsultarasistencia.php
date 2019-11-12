@@ -8,19 +8,16 @@ include_once('../includes/database.php');
 		function listarAsistencia( $conexion, $id, $fi, $cedper ){
 		$sql = "SELECT jornada.fecha_jornada, jornada.cedper, jornada.h_entrada, jornada_salida.h_salida FROM jornada, jornada_salida WHERE  jornada.fecha_jornada BETWEEN '$id'
 AND '$fi' AND jornada.cedper='$cedper' AND jornada.cedper=jornada_salida.cedper AND jornada.fecha_jornada=jornada_salida.fecha_jornada ORDER BY jornada.fecha_jornada ASC";
-		$sql1 = "SELECT justificacion.id_justificacion ,justificacion.comentario,justificacion.fecha_creacion,justificacion.id_tipo_justificacion,
-justificacion.fecha_justificar,justificacion.cedper,justificacion.status,personal.nombres,personal.apellido,
+		$sql1 = "SELECT personal.cedper,personal.nombres,personal.apellido,
 personal.depuniadm,personal.ofiuniadm,personal.minorguniadm,personal.uniuniadm,
-personal.prouniadm,personal.estatus,tipo_justificacion.nom_justificacion, sno_unidadadm.desuniadm
-  FROM public.justificacion,public.personal,public.tipo_justificacion, public.sno_unidadadm 
-  where justificacion.cedper=personal.cedper
-AND tipo_justificacion.id_tipo_justificacion=justificacion.id_tipo_justificacion
-AND sno_unidadadm.depuniadm=personal.depuniadm
+personal.prouniadm,personal.estatus, sno_unidadadm.desuniadm
+  FROM public.personal,public.sno_unidadadm 
+  WHERE sno_unidadadm.depuniadm=personal.depuniadm
 AND sno_unidadadm.ofiuniadm=personal.ofiuniadm
 AND sno_unidadadm.minorguniadm=personal.minorguniadm
 AND sno_unidadadm.uniuniadm=personal.uniuniadm
 AND sno_unidadadm.prouniadm=personal.prouniadm
-   AND justificacion.cedper='$cedper'";
+   AND personal.cedper='$cedper'";
 
 		$ok = true;
 
@@ -50,9 +47,6 @@ AND sno_unidadadm.prouniadm=personal.prouniadm
         </div>
        </div>
           ";
-         echo "<div class='col-sm-12 text-right'><a target='_blank' href='../vista/fpdf.php?id=<?php echo $codificado =
- base64_encode($cedper) ?>' class='btn btn-danger'>Exportar a PDF</a>        ";
-echo "<a href='../vista/consultar_asistencia_talento.php' class='btn btn-info' role='button'>Volver</a> </div></div><br><br><br><br><br><br><br><br><br><br>";
                    
             }
 
@@ -61,6 +55,10 @@ echo "<a href='../vista/consultar_asistencia_talento.php' class='btn btn-info' r
 			// Obtener el número de filas:
 			if( pg_num_rows($rs) > 0 )
 			{
+				echo "<div class='col-sm-12 text-right'><a target='_blank' href='../root/fpdf.php?id=".$codificado =
+ base64_encode($cedper)."&id2=".$codificado1 =
+ base64_encode($id)."&id3=".$codificado2 =
+ base64_encode($fi)."' class='btn btn-danger'>Exportar a PDF</a> <a href='../vista/consultar_asistencia_talento.php' class='btn btn-info' role='button'>Volver</a></div>  <br> <br>     ";
 
 				echo "<table class='table'>
 					<tr>

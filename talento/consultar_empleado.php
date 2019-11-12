@@ -14,7 +14,7 @@
           <li><a href="crear_empleado_talento.php"><img src="../images/1.2.png" alt="#"/> Crear</a></li>
             <li class="active"><a href="consultar_empleado_talento.php"><img src="../images/1.1.png" alt="#"/> Consultar</a></li>
           </ul>
-        </div><!--/.nav-collapse -->
+        </div>
       </div>
     </div>
   </div>
@@ -42,11 +42,10 @@
   </select>
   
 </div>
-
+         
         <span >
           <button type="submit"  class="btn btn-primary " type="button" onclick="loadLog()">Consultar</button>
-          </span>
-            
+          </span>   
         </div> 
         </div>
         

@@ -50,17 +50,20 @@
   echo "value=".$obj->cedper.">";
                           ?>
 
-<label for="cla1" class="col-lg-3 control-label">
+<br><label for="cla1" class="col-lg-3 control-label">
                             Contraseña:
                         </label>
-                         
-<input class="form-control" id="cla1" type="password"  placeholder="Escribir contraseña" name="cla1" required="">
+<input class="form-control" id="cla1" type="password"  placeholder="Escribir contraseña" name="cla1" required=""<?php
+  echo "value=".$obj->clave.">";
+                          ?>
 
-<label for="cla2" class="col-lg-3 control-label">
+<br><label for="cla2" class="col-lg-6 control-label">
                             Repetir contraseña:
                         </label>
-                         
-<input class="form-control" id="cla2" type="password"  placeholder="Escribir contraseña" name="cla2" required="">
+<input class="form-control" id="cla2" type="password"  placeholder="Escribir contraseña" name="cla2" required=""<?php
+  echo "value=".$obj->clave.">";
+                          ?>
+<br>
       
 <label for="id_rol" class="col-lg-3 control-label">
                             Rol:

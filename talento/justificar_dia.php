@@ -28,13 +28,13 @@
   <li><a href="../vista/consultar_justificaciones_talento.php">Consultar Justificaciones</a></li>
 </ul>
 <br>
-   <div id="login">        
+ <div id="login">        
 <div class='container-fluid'>
-            <div class="form-group">
+<div class="form-group">
             <label for="cedper" class="col-lg-3 control-label">
              Cedula:
  </label>
-                   <div class="col-lg-6">
+<div class="col-lg-6">
 <select class="form-control" required="required" name="cedper" id="cedper">
   <?php
   include_once('../includes/database.php');
@@ -47,25 +47,10 @@
   };
   ?>
   </select>
-  
 </div>
-<br>
-<br>
-<label for="cedper" class="col-lg-3 control-label">
-             Dia a Justificar:
- </label>
-<div class="col-lg-6 text-center">
-            <div class="panel panel-default">
-             <div class="panel-body">
-                   <input id="loginemail" type="text" class="tcal" name="email" required=""  onkeypress="return validarnumeros(event)">
-            
-            </div>
-             </div>
-        </div>
-<br>
-        <br>
-         <br>
-         <br>
+ </div>
+  <br>
+<div class="form-group">
 <label for="tipo" class="col-lg-3 control-label">
              Tipo de justificacion:
  </label>
@@ -86,30 +71,43 @@
   </select>
   
 </div>
-        
-        <br>
-        <br>
+ </div>
+ <br>
+<div class="form-group">
 <label for="comentario" class="col-lg-3 control-label">
               Comentario:
  </label>
-                   <div class="col-lg-6">
+  <div class="col-lg-6">
 <textarea class="form-control" rows="1" id="comentario" name="comentario" type="text" placeholder="" value=" "></textarea>
   
 </div>
+</div>
 <br>
-<br> 
-        <br>
+<br>
+<div class="form-group">
+<label for="cedper" class="col-lg-3 control-label">
+             Dia a Justificar:
+ </label>
+<div class="col-lg-6 text-center">
+            <div class="panel panel-default">
+             <div class="panel-body">
+                   <input id="loginemail" type="text" class="tcal" name="email" required=""  onkeypress="return validarnumeros(event)">
+            
+            </div>
+             </div>
         </div>
         </div>
-
-        <div class="col-lg-12 text-center">
+ <div class="col-lg-12 text-center">
             <div class="form-group">
       <span >
           <button type="submit"  class="btn btn-primary " type="button" onclick="loadLog()">Crear</button>
       </span>
         </div>
         </div>
-</div>
+
+        </div>
+        </div>
+        </div>
         
 
 

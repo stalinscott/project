@@ -33,9 +33,8 @@ $dia= date ("N");
 	<link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap-theme-min-css">
 	<link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="../bootstrap/css/style.css">
-	-->
     <link rel="stylesheet" type="text/css" href="../css/tcal.css">
-    <script type="text/javascript" src="../js/tcal.js"></script> >
+    <script type="text/javascript" src="../js/tcal.js"></script>
 	<!-- IMPORTAMOS LOS ARCHIVOS JAVASCRIPT DEL FRAMEWORK DE BOOTSTRAP -->
 	<script type="text/javascript" src="../bootstrap/js/jquery.1.8.1.js"></script>
 	<script type="text/javascript" src="../bootstrap/js/jquery.min.js"></script>

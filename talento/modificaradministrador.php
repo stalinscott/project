@@ -21,6 +21,7 @@
   <div id="login"> 
   <div class="container-fluid">
 <br>
+<div class="col-sm-9">
 <div class="panel-heading">
         <h2  align="center"> Modificar Administrador</h2>
       </div> 
@@ -40,34 +41,24 @@
             if( $obj = pg_fetch_object($rs))
             {
             ?>
-                  <div class="form-group">
-<label for="cla1" class="col-lg-3 control-label">
-                            Cedula:
-                        </label>
+<label for="cedper" class="col-lg-3 control-label">Cedula:</label>
 <input class="form-control" id="cedper" type="cedper"  placeholder="Cedula de identidad" name="cedper" required="" disabled <?php
   echo "value=".$obj->cedper.">";
                           ?>
-
-
-<label for="usuario" class="col-lg-3 control-label">
-                            Usuario:
-                        </label>
-                        
-<input class="form-control" id="usuario" type="text"  placeholder="Escribir usuario" name="usuario" required="" disabled  onkeypress="return validarnumeros(event)" <?php
-  echo "value=".$obj->usuario.">";
+                            <br>
+<label for="cedper" class="col-lg-3 control-label">Usuario:</label>
+<input class="form-control" id="usuario" type="usuario"  placeholder="Cedula de identidad" name="usuario" required="" disabled <?php
+  echo "value=".$obj->usuario.">"; ?>
+                            <br>
+                            <label for="cedper" class="col-lg-3 control-label">Contraseña:</label>
+<input class="form-control" id="cla1" type="password"  placeholder="Escribir contraseña" name="cla1" required="" <?php
+  echo "value=".$obj->clave.">";
                           ?>
-
-
-<label for="cla1" class="col-lg-3 control-label">
-                            Contraseña:
-                        </label>
-                       
-<input class="form-control" id="cla1" type="password"  placeholder="Escribir contraseña" name="cla1" required="">
-
-<label for="cla2" class="col-lg-3 control-label">
-                            Repetir contraseña:
-                        </label>
-<input class="form-control" id="cla2" type="password"  placeholder="Escribir contraseña" name="cla2" required="">
+                            <br><label for="cedper" class="col-lg-3 control-label">Repetir contraseña:</label>
+<input class="form-control" id="cla2" type="password"  placeholder="Escribir contraseña" name="cla2" required="" <?php
+  echo "value=".$obj->clave.">";
+                          ?>
+                            <br>
 <label for="id_rol" class="col-lg-3 control-label">
                             Rol:
                         </label>

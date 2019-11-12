@@ -1,5 +1,5 @@
 <?php 
-
+  ini_set("display_errors", "on");
 if (isset($_POST))
 {
 	include_once('../includes/database.php');
@@ -26,7 +26,9 @@ echo "<br>";
 echo "<br>";
 echo "<br>";
 echo "<div class='col-sm-9'><label for='$fecha_registrar' class='col-lg-3 control-label'>Fecha a Justificar:</label>
-<input class='form-control' id='$fecha_registrar' type='$fecha_registrar'  placeholder='Cedula de identidad' name='$fecha_registrar' required='' value='$fecha_registrar' disabled ></div>";
+<input class='form-control' id='$fecha_registrar' type='$fecha_registrar'  placeholder='Cedula de identidad' name='$fecha_registrar' required='' value='$fecha_registrar' disabled ><br></div>";
+echo "<br>";
+echo "<br>";
 echo "<br>";
 echo "<br>";
 
@@ -40,20 +42,42 @@ include_once('../includes/database.php');
   AND jornada.fecha_jornada=jornada_salida.fecha_jornada
   AND jornada.fecha_jornada='$id';
 ";
-
+$sql1 = "SELECT id_justificacion, comentario, fecha_creacion, id_tipo_justificacion, 
+       fecha_justificar, cedper, status
+  FROM public.justificacion WHERE justificacion.fecha_justificar='$id'
+  and justificacion.cedper=".$_POST["cedper"]." ;
+";
 		$ok = true;
 
 		// Ejecutar la consulta:
 		$rs = pg_query( $conexion, $sql );
+		$rs1 = pg_query( $conexion, $sql1 );
+	
 
-		if( $rs )
+		if( $rs | $rs1 )
 		{
+			if( pg_num_rows($rs1) > 0 )
+			{
+				echo "
+			<div class='container-fluid'>
+			<div class='col-sm-9'>
+  <h3><center>Este dia, ya ha sido justificado<center></h3>
+<div class='well well-sm'><center>¿Desea justificar otro dia?</Center></div>
+      			<center><a  href='../vista/justificar_dia_talento.php' class='btn btn-success' role='button'>Si</a>
+               <a  href='../vista/consultar_justificaciones_talento.php' class='btn btn-danger role='button'>No</a></center></div>
+</div></div>
+
+			";
+			}
+			
+
 			// Obtener el número de filas:
+			else
 			if( pg_num_rows($rs) > 0 )
 			{
-				echo "<table class='table'>
+				echo "<br><br><br><br><table class='table'>
 					<tr>
-																				<th>Cedula</th>
+																				
 																		 <th>Fecha</th>
 																		 <th>Hora Entrada</th>
 																				<th>Hora Salida</th>
@@ -63,7 +87,7 @@ include_once('../includes/database.php');
 				// Recorrer el resource y mostrar los datos:
 				while( $objFila = pg_fetch_object($rs) )
 
-					echo " <tr> <td> ".$objFila->cedper." </td>
+					echo " <tr> 
                <td> ".$objFila->fecha_jornada."
                </td>
                <td>".$objFila->h_entrada."
@@ -71,6 +95,7 @@ include_once('../includes/database.php');
                <td> ".$objFila->h_salida."
                </td></tr>";
 			}
+			 
 			else
 
 				echo "
@@ -79,7 +104,7 @@ include_once('../includes/database.php');
   <h3>No se ha encontrado Asistencia el dia ".$_POST["email"]."</h3>
 <div class='well well-sm'><center>¿Desea Justificar este dia?</Center></div>
       			<center><a  href='../vista/postjustificardia_talento.php?cedper=".$codificado = base64_encode($_POST["cedper"])."&f=".$codificado1 = base64_encode($_POST["email"])."&t=".$codificado2 = base64_encode($_POST["tipo"])."&c=".$codificado3 = base64_encode($_POST["comentario"])."' class='btn btn-success' role='button'>Si</a>
-               <a  href='../vista/justificar_dia_talento.php' class='btn btn-danger role='button'>No</a></center></div>
+               <a  href='../vista/consultar_justificaciones_talento.php' class='btn btn-danger role='button'>No</a></center></div>
 </div></div>
 
 			";

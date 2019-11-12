@@ -19,26 +19,53 @@ if (isset($_POST))
             AND administrador.prouniadm=sno_unidadadm.prouniadm
             AND rol.id_rol!='1'
             AND rol.id_rol!='2'";
+            $sql1 = "SELECT *
+  FROM sno_unidadadm 
+  WHERE 
+  sno_unidadadm.depuniadm='$depuniadm' 
+  and sno_unidadadm.ofiuniadm='$ofiuniadm' 
+  and sno_unidadadm.minorguniadm='$minorguniadm'
+   and sno_unidadadm.uniuniadm='$uniuniadm' 
+   and sno_unidadadm.prouniadm='$prouniadm'";
 
     $ok = true;
 
     // Ejecutar la consulta:
     $rs = pg_query( $conexion, $sql );
+     $rs1 = pg_query( $conexion, $sql1 );
+
+    if( $obj = pg_fetch_object($rs1))
+            {
+
+       
+           
+     echo "<br> <div class='col-sm-12'>
+
+      <div class='row'>
+      <div class='col-sm-12 form-group'>
+   Departamento:<input class='form-control' id='cedper' type='cedper'  placeholder='Cedula de identidad' name='cedper' required='' value='$obj->desuniadm' disabled >
+        </div>
+       </div>
+          ";
+                   
+            }
 
     if( $rs )
     {
       // Obtener el número de filas:
       if( pg_num_rows($rs) > 0 )
       {
+        echo "<div class='col-sm-12 text-right'>
+          <a target='_blank' href='../talento/fpdf3.php?id=".$codificado =
+ base64_encode($_POST['sno_unidadadm'])."' class='btn btn-danger'>Exportar a PDF</a> <a href='../vista/consultar_administrador_talento.php' class='btn btn-info' role='button'>Volver</a></div>  <br> <br>     ";
 
-        echo "<div class='container-fluid'>
+        echo "
         <table class='table'>
         <tr>
                                       <th>Cedula</th>
-                                      <th>Usuario</th>
+                                       <th>Usuario</th>
                                       <th>Nombre</th>
                                       <th>Apellido</th>
-                                      <th>Departamento</th>
                                       <th>Rol</th>
                                       <th>opciones</th>
                             </tr>";
@@ -49,15 +76,14 @@ if (isset($_POST))
             <div class='container-fluid'>
             <tr class='table-primary'>
             <td>".$objFila->cedper." </td>
-            <td>".$objFila->usuario." </td>
+             <td>".$objFila->usuario." </td>
              <td>".$objFila->nombres." </td>
              <td>".$objFila->apellido." </td>
-              <td>".$objFila->desuniadm." </td>
                 <td>".$objFila->nom_rol." </td>
                <TD><A HREF='../vista/modificaradministrador_talento.php?id=".$codificado = base64_encode($objFila->cedper)."' title='Modificar'><IMG SRC='../images/navegador.png' ALT='modificar'></A>            
                       <A HREF='../vista/borraradministrador_talento.php?id=".$codificado = base64_encode($objFila->cedper)."' title='Borrar'><IMG SRC='../images/borrar.png' ALT='borrar'></A></TD>
                </tr></div>";
-               echo "</table><br><a href='../vista/consultar_administrador_talento.php' class='btn btn-info' role='button'>Volver</a></div> ";
+               echo "</table></div> ";
       }
       else
       echo "<br><div class='panel panel-danger'>

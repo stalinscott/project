@@ -36,7 +36,7 @@
                         </label>
             <div class="form-group">       
             <div class="col-lg-12">
-                <select class="form-control" required="required" name="sno_unidadadm" id="sno_unidadadm">
+                <select class="form-control"  required="required" name="sno_unidadadm" id="sno_unidadadm">
   <?php
   include_once('../includes/database.php');
   ini_set("display_errors", "on");
@@ -51,120 +51,43 @@
   </select>
             </div>
             </div>
-            <br>
-            <br>
-            <br>
             <div class="form-group">
 <label for="lunes" class="col-sm-9 control-label">
                             Lunes:
                         </label>
+                        
                          <div class="col-sm-6">
                          Entrada:
                           <select class="form-control"  required="required" name="lunes_e" id="lunes_e">
-  <option value="Libre">Libre</option>
-  <option value="1:00am">1:00 AM</option>
-  <option value="1:30am">1:30 AM</option>
-  <option value="2:00am">2:00 AM</option>
-  <option value="2:30am">2:30 AM</option>
-  <option value="3:00am">3:00 AM</option>
-  <option value="3:30am">3:30 AM</option>
-  <option value="4:00am">4:00 AM</option>
-  <option value="4:30am">4:30 AM</option>
-  <option value="5:00am">5:00 AM</option>
-  <option value="5:30am">5:30 AM</option>
-  <option value="6:00am">6:00 AM</option>
-  <option value="6:30am">6:30 AM</option>
-  <option value="7:00am">7:00 AM</option>
-  <option value="7:30am">7:30 AM</option>
-  <option value="8:00am">8:00 AM</option>
-  <option value="8:30am">8:30 AM</option>
-  <option value="9:00am">9:00 AM</option>
-  <option value="9:30am">9:30 AM</option>
-  <option value="10:00am">10:00 AM</option>
-  <option value="10:30am">10:30 AM</option>
-  <option value="11:00am">11:00 AM</option>
-  <option value="11:30am">11:30 AM</option>
-  <option value="12:00pm">12:00 PM</option>
-  <option value="12:30pm">12:30 PM</option>
-  <option value="1:00pm">1:00 PM</option>
-  <option value="1:30pm">1:30 PM</option>
-  <option value="2:00pm">2:00 PM</option>
-  <option value="2:30pm">2:30 PM</option>
-  <option value="3:00pm">3:00 PM</option>
-  <option value="3:30pm">3:30 PM</option>
-  <option value="4:00pm">4:00 PM</option>
-  <option value="4:30pm">4:30 PM</option>
-  <option value="5:00pm">5:00 PM</option>
-  <option value="5:30pm">5:30 PM</option>
-  <option value="6:00pm">6:00 PM</option>
-  <option value="6:30pm">6:30 PM</option>
-  <option value="7:00pm">7:00 PM</option>
-  <option value="7:30pm">7:30 PM</option>
-  <option value="8:00pm">8:00 PM</option>
-  <option value="8:30pm">8:30 PM</option>
-  <option value="9:00pm">9:00 PM</option>
-  <option value="9:30pm">9:30 PM</option>
-  <option value="10:00pm">10:00 PM</option>
-  <option value="10:30pm">10:30 PM</option>
-  <option value="11:00pm">11:00 PM</option>
-  <option value="11:30pm">11:30 PM</option>
-  <option value="12:00am">12:00 AM</option>
-  <option value="12:30am">12:30 AM</option>
-
+   <?php
+  include_once('../includes/database.php');
+  ini_set("display_errors", "on");
+  $sql = "SELECT id_hora, hora
+  FROM public.hora;
+;";
+  $ok = true;
+  $rs = pg_query( $conexion, $sql );
+  while( $objFila = pg_fetch_object($rs) ){
+  echo '<option value="'.$objFila->hora.'">'.$objFila->hora.'</option>';
+  };
+  ?>
   </select>
 </div>
 <div class="col-sm-6">
  Salida:
 <select class="form-control"  required="required" name="lunes_s" id="lunes_s">
-  <option value="Libre">Libre</option>
-  <option value="1:00am">1:00 AM</option>
-  <option value="1:30am">1:30 AM</option>
-  <option value="2:00am">2:00 AM</option>
-  <option value="2:30am">2:30 AM</option>
-  <option value="3:00am">3:00 AM</option>
-  <option value="3:30am">3:30 AM</option>
-  <option value="4:00am">4:00 AM</option>
-  <option value="4:30am">4:30 AM</option>
-  <option value="5:00am">5:00 AM</option>
-  <option value="5:30am">5:30 AM</option>
-  <option value="6:00am">6:00 AM</option>
-  <option value="6:30am">6:30 AM</option>
-  <option value="7:00am">7:00 AM</option>
-  <option value="7:30am">7:30 AM</option>
-  <option value="8:00am">8:00 AM</option>
-  <option value="8:30am">8:30 AM</option>
-  <option value="9:00am">9:00 AM</option>
-  <option value="9:30am">9:30 AM</option>
-  <option value="10:00am">10:00 AM</option>
-  <option value="10:30am">10:30 AM</option>
-  <option value="11:00am">11:00 AM</option>
-  <option value="11:30am">11:30 AM</option>
-  <option value="12:00pm">12:00 PM</option>
-  <option value="12:30pm">12:30 PM</option>
-  <option value="1:00pm">1:00 PM</option>
-  <option value="1:30pm">1:30 PM</option>
-  <option value="2:00pm">2:00 PM</option>
-  <option value="2:30pm">2:30 PM</option>
-  <option value="3:00pm">3:00 PM</option>
-  <option value="3:30pm">3:30 PM</option>
-  <option value="4:00pm">4:00 PM</option>
-  <option value="4:30pm">4:30 PM</option>
-  <option value="5:00pm">5:00 PM</option>
-  <option value="5:30pm">5:30 PM</option>
-  <option value="6:00pm">6:00 PM</option>
-  <option value="6:30pm">6:30 PM</option>
-  <option value="7:00pm">7:00 PM</option>
-  <option value="7:30pm">7:30 PM</option>
-  <option value="8:00pm">8:00 PM</option>
-  <option value="8:30pm">8:30 PM</option>
-  <option value="9:00pm">9:00 PM</option>
-  <option value="9:30pm">9:30 PM</option>
-  <option value="10:00pm">10:00 PM</option>
-  <option value="10:30pm">10:30 PM</option>
-  <option value="11:00pm">11:00 PM</option>
-  <option value="11:30pm">11:30 PM</option>
-  <option value="12:00am">12:00 AM</option>
-  <option value="12:30am">12:30 AM</option>
+  <?php
+  include_once('../includes/database.php');
+  ini_set("display_errors", "on");
+  $sql = "SELECT id_hora, hora
+  FROM public.hora;
+;";
+  $ok = true;
+  $rs = pg_query( $conexion, $sql );
+  while( $objFila = pg_fetch_object($rs) ){
+  echo '<option value="'.$objFila->hora.'">'.$objFila->hora.'</option>';
+  };
+  ?>
   </select>
   <br>
 </div>
@@ -176,110 +99,36 @@
                          <div class="col-sm-6">
  Entrada:
 <select class="form-control"  required="required" name="martes_e" id="martes_e">
-  <option value="Libre">Libre</option>
-  <option value="1:00am">1:00 AM</option>
-  <option value="1:30am">1:30 AM</option>
-  <option value="2:00am">2:00 AM</option>
-  <option value="2:30am">2:30 AM</option>
-  <option value="3:00am">3:00 AM</option>
-  <option value="3:30am">3:30 AM</option>
-  <option value="4:00am">4:00 AM</option>
-  <option value="4:30am">4:30 AM</option>
-  <option value="5:00am">5:00 AM</option>
-  <option value="5:30am">5:30 AM</option>
-  <option value="6:00am">6:00 AM</option>
-  <option value="6:30am">6:30 AM</option>
-  <option value="7:00am">7:00 AM</option>
-  <option value="7:30am">7:30 AM</option>
-  <option value="8:00am">8:00 AM</option>
-  <option value="8:30am">8:30 AM</option>
-  <option value="9:00am">9:00 AM</option>
-  <option value="9:30am">9:30 AM</option>
-  <option value="10:00am">10:00 AM</option>
-  <option value="10:30am">10:30 AM</option>
-  <option value="11:00am">11:00 AM</option>
-  <option value="11:30am">11:30 AM</option>
-  <option value="12:00pm">12:00 PM</option>
-  <option value="12:30pm">12:30 PM</option>
-  <option value="1:00pm">1:00 PM</option>
-  <option value="1:30pm">1:30 PM</option>
-  <option value="2:00pm">2:00 PM</option>
-  <option value="2:30pm">2:30 PM</option>
-  <option value="3:00pm">3:00 PM</option>
-  <option value="3:30pm">3:30 PM</option>
-  <option value="4:00pm">4:00 PM</option>
-  <option value="4:30pm">4:30 PM</option>
-  <option value="5:00pm">5:00 PM</option>
-  <option value="5:30pm">5:30 PM</option>
-  <option value="6:00pm">6:00 PM</option>
-  <option value="6:30pm">6:30 PM</option>
-  <option value="7:00pm">7:00 PM</option>
-  <option value="7:30pm">7:30 PM</option>
-  <option value="8:00pm">8:00 PM</option>
-  <option value="8:30pm">8:30 PM</option>
-  <option value="9:00pm">9:00 PM</option>
-  <option value="9:30pm">9:30 PM</option>
-  <option value="10:00pm">10:00 PM</option>
-  <option value="10:30pm">10:30 PM</option>
-  <option value="11:00pm">11:00 PM</option>
-  <option value="11:30pm">11:30 PM</option>
-  <option value="12:00am">12:00 AM</option>
-  <option value="12:30am">12:30 AM</option>
+    <?php
+  include_once('../includes/database.php');
+  ini_set("display_errors", "on");
+  $sql = "SELECT id_hora, hora
+  FROM public.hora;
+;";
+  $ok = true;
+  $rs = pg_query( $conexion, $sql );
+  while( $objFila = pg_fetch_object($rs) ){
+  echo '<option value="'.$objFila->hora.'">'.$objFila->hora.'</option>';
+  };
+  ?>
   </select>
   <br>
 </div>
  <div class="col-sm-6">
  Salida:
 <select class="form-control"  required="required" name="martes_s" id="martes_s">
-  <option value="Libre">Libre</option>
-  <option value="1:00am">1:00 AM</option>
-  <option value="1:30am">1:30 AM</option>
-  <option value="2:00am">2:00 AM</option>
-  <option value="2:30am">2:30 AM</option>
-  <option value="3:00am">3:00 AM</option>
-  <option value="3:30am">3:30 AM</option>
-  <option value="4:00am">4:00 AM</option>
-  <option value="4:30am">4:30 AM</option>
-  <option value="5:00am">5:00 AM</option>
-  <option value="5:30am">5:30 AM</option>
-  <option value="6:00am">6:00 AM</option>
-  <option value="6:30am">6:30 AM</option>
-  <option value="7:00am">7:00 AM</option>
-  <option value="7:30am">7:30 AM</option>
-  <option value="8:00am">8:00 AM</option>
-  <option value="8:30am">8:30 AM</option>
-  <option value="9:00am">9:00 AM</option>
-  <option value="9:30am">9:30 AM</option>
-  <option value="10:00am">10:00 AM</option>
-  <option value="10:30am">10:30 AM</option>
-  <option value="11:00am">11:00 AM</option>
-  <option value="11:30am">11:30 AM</option>
-  <option value="12:00pm">12:00 PM</option>
-  <option value="12:30pm">12:30 PM</option>
-  <option value="1:00pm">1:00 PM</option>
-  <option value="1:30pm">1:30 PM</option>
-  <option value="2:00pm">2:00 PM</option>
-  <option value="2:30pm">2:30 PM</option>
-  <option value="3:00pm">3:00 PM</option>
-  <option value="3:30pm">3:30 PM</option>
-  <option value="4:00pm">4:00 PM</option>
-  <option value="4:30pm">4:30 PM</option>
-  <option value="5:00pm">5:00 PM</option>
-  <option value="5:30pm">5:30 PM</option>
-  <option value="6:00pm">6:00 PM</option>
-  <option value="6:30pm">6:30 PM</option>
-  <option value="7:00pm">7:00 PM</option>
-  <option value="7:30pm">7:30 PM</option>
-  <option value="8:00pm">8:00 PM</option>
-  <option value="8:30pm">8:30 PM</option>
-  <option value="9:00pm">9:00 PM</option>
-  <option value="9:30pm">9:30 PM</option>
-  <option value="10:00pm">10:00 PM</option>
-  <option value="10:30pm">10:30 PM</option>
-  <option value="11:00pm">11:00 PM</option>
-  <option value="11:30pm">11:30 PM</option>
-  <option value="12:00am">12:00 AM</option>
-  <option value="12:30am">12:30 AM</option>
+   <?php
+  include_once('../includes/database.php');
+  ini_set("display_errors", "on");
+  $sql = "SELECT id_hora, hora
+  FROM public.hora;
+;";
+  $ok = true;
+  $rs = pg_query( $conexion, $sql );
+  while( $objFila = pg_fetch_object($rs) ){
+  echo '<option value="'.$objFila->hora.'">'.$objFila->hora.'</option>';
+  };
+  ?>
   </select>
   <br>
 </div>
@@ -292,110 +141,36 @@
                          <div class="col-sm-6">
  Entrada:
 <select class="form-control"  required="required" name="miercoles_e" id="miercoles_e">
-  <option value="Libre">Libre</option>
-  <option value="1:00am">1:00 AM</option>
-  <option value="1:30am">1:30 AM</option>
-  <option value="2:00am">2:00 AM</option>
-  <option value="2:30am">2:30 AM</option>
-  <option value="3:00am">3:00 AM</option>
-  <option value="3:30am">3:30 AM</option>
-  <option value="4:00am">4:00 AM</option>
-  <option value="4:30am">4:30 AM</option>
-  <option value="5:00am">5:00 AM</option>
-  <option value="5:30am">5:30 AM</option>
-  <option value="6:00am">6:00 AM</option>
-  <option value="6:30am">6:30 AM</option>
-  <option value="7:00am">7:00 AM</option>
-  <option value="7:30am">7:30 AM</option>
-  <option value="8:00am">8:00 AM</option>
-  <option value="8:30am">8:30 AM</option>
-  <option value="9:00am">9:00 AM</option>
-  <option value="9:30am">9:30 AM</option>
-  <option value="10:00am">10:00 AM</option>
-  <option value="10:30am">10:30 AM</option>
-  <option value="11:00am">11:00 AM</option>
-  <option value="11:30am">11:30 AM</option>
-  <option value="12:00pm">12:00 PM</option>
-  <option value="12:30pm">12:30 PM</option>
-  <option value="1:00pm">1:00 PM</option>
-  <option value="1:30pm">1:30 PM</option>
-  <option value="2:00pm">2:00 PM</option>
-  <option value="2:30pm">2:30 PM</option>
-  <option value="3:00pm">3:00 PM</option>
-  <option value="3:30pm">3:30 PM</option>
-  <option value="4:00pm">4:00 PM</option>
-  <option value="4:30pm">4:30 PM</option>
-  <option value="5:00pm">5:00 PM</option>
-  <option value="5:30pm">5:30 PM</option>
-  <option value="6:00pm">6:00 PM</option>
-  <option value="6:30pm">6:30 PM</option>
-  <option value="7:00pm">7:00 PM</option>
-  <option value="7:30pm">7:30 PM</option>
-  <option value="8:00pm">8:00 PM</option>
-  <option value="8:30pm">8:30 PM</option>
-  <option value="9:00pm">9:00 PM</option>
-  <option value="9:30pm">9:30 PM</option>
-  <option value="10:00pm">10:00 PM</option>
-  <option value="10:30pm">10:30 PM</option>
-  <option value="11:00pm">11:00 PM</option>
-  <option value="11:30pm">11:30 PM</option>
-  <option value="12:00am">12:00 AM</option>
-  <option value="12:30am">12:30 AM</option>
+    <?php
+  include_once('../includes/database.php');
+  ini_set("display_errors", "on");
+  $sql = "SELECT id_hora, hora
+  FROM public.hora;
+;";
+  $ok = true;
+  $rs = pg_query( $conexion, $sql );
+  while( $objFila = pg_fetch_object($rs) ){
+  echo '<option value="'.$objFila->hora.'">'.$objFila->hora.'</option>';
+  };
+  ?>
   </select>
   <br>
 </div>
  <div class="col-sm-6">
  Salida:
 <select class="form-control"  required="required" name="miercoles_s" id="miercoles_s">
-  <option value="Libre">Libre</option>
-  <option value="1:00am">1:00 AM</option>
-  <option value="1:30am">1:30 AM</option>
-  <option value="2:00am">2:00 AM</option>
-  <option value="2:30am">2:30 AM</option>
-  <option value="3:00am">3:00 AM</option>
-  <option value="3:30am">3:30 AM</option>
-  <option value="4:00am">4:00 AM</option>
-  <option value="4:30am">4:30 AM</option>
-  <option value="5:00am">5:00 AM</option>
-  <option value="5:30am">5:30 AM</option>
-  <option value="6:00am">6:00 AM</option>
-  <option value="6:30am">6:30 AM</option>
-  <option value="7:00am">7:00 AM</option>
-  <option value="7:30am">7:30 AM</option>
-  <option value="8:00am">8:00 AM</option>
-  <option value="8:30am">8:30 AM</option>
-  <option value="9:00am">9:00 AM</option>
-  <option value="9:30am">9:30 AM</option>
-  <option value="10:00am">10:00 AM</option>
-  <option value="10:30am">10:30 AM</option>
-  <option value="11:00am">11:00 AM</option>
-  <option value="11:30am">11:30 AM</option>
-  <option value="12:00pm">12:00 PM</option>
-  <option value="12:30pm">12:30 PM</option>
-  <option value="1:00pm">1:00 PM</option>
-  <option value="1:30pm">1:30 PM</option>
-  <option value="2:00pm">2:00 PM</option>
-  <option value="2:30pm">2:30 PM</option>
-  <option value="3:00pm">3:00 PM</option>
-  <option value="3:30pm">3:30 PM</option>
-  <option value="4:00pm">4:00 PM</option>
-  <option value="4:30pm">4:30 PM</option>
-  <option value="5:00pm">5:00 PM</option>
-  <option value="5:30pm">5:30 PM</option>
-  <option value="6:00pm">6:00 PM</option>
-  <option value="6:30pm">6:30 PM</option>
-  <option value="7:00pm">7:00 PM</option>
-  <option value="7:30pm">7:30 PM</option>
-  <option value="8:00pm">8:00 PM</option>
-  <option value="8:30pm">8:30 PM</option>
-  <option value="9:00pm">9:00 PM</option>
-  <option value="9:30pm">9:30 PM</option>
-  <option value="10:00pm">10:00 PM</option>
-  <option value="10:30pm">10:30 PM</option>
-  <option value="11:00pm">11:00 PM</option>
-  <option value="11:30pm">11:30 PM</option>
-  <option value="12:00am">12:00 AM</option>
-  <option value="12:30am">12:30 AM</option>
+    <?php
+  include_once('../includes/database.php');
+  ini_set("display_errors", "on");
+  $sql = "SELECT id_hora, hora
+  FROM public.hora;
+;";
+  $ok = true;
+  $rs = pg_query( $conexion, $sql );
+  while( $objFila = pg_fetch_object($rs) ){
+  echo '<option value="'.$objFila->hora.'">'.$objFila->hora.'</option>';
+  };
+  ?>
   </select>
   <br>
 </div>
@@ -408,110 +183,36 @@
 <div class="col-sm-6">
  Entrada:
 <select class="form-control"  required="required" name="jueves_e" id="jueves_e">
-  <option value="Libre">Libre</option>
-  <option value="1:00am">1:00 AM</option>
-  <option value="1:30am">1:30 AM</option>
-  <option value="2:00am">2:00 AM</option>
-  <option value="2:30am">2:30 AM</option>
-  <option value="3:00am">3:00 AM</option>
-  <option value="3:30am">3:30 AM</option>
-  <option value="4:00am">4:00 AM</option>
-  <option value="4:30am">4:30 AM</option>
-  <option value="5:00am">5:00 AM</option>
-  <option value="5:30am">5:30 AM</option>
-  <option value="6:00am">6:00 AM</option>
-  <option value="6:30am">6:30 AM</option>
-  <option value="7:00am">7:00 AM</option>
-  <option value="7:30am">7:30 AM</option>
-  <option value="8:00am">8:00 AM</option>
-  <option value="8:30am">8:30 AM</option>
-  <option value="9:00am">9:00 AM</option>
-  <option value="9:30am">9:30 AM</option>
-  <option value="10:00am">10:00 AM</option>
-  <option value="10:30am">10:30 AM</option>
-  <option value="11:00am">11:00 AM</option>
-  <option value="11:30am">11:30 AM</option>
-  <option value="12:00pm">12:00 PM</option>
-  <option value="12:30pm">12:30 PM</option>
-  <option value="1:00pm">1:00 PM</option>
-  <option value="1:30pm">1:30 PM</option>
-  <option value="2:00pm">2:00 PM</option>
-  <option value="2:30pm">2:30 PM</option>
-  <option value="3:00pm">3:00 PM</option>
-  <option value="3:30pm">3:30 PM</option>
-  <option value="4:00pm">4:00 PM</option>
-  <option value="4:30pm">4:30 PM</option>
-  <option value="5:00pm">5:00 PM</option>
-  <option value="5:30pm">5:30 PM</option>
-  <option value="6:00pm">6:00 PM</option>
-  <option value="6:30pm">6:30 PM</option>
-  <option value="7:00pm">7:00 PM</option>
-  <option value="7:30pm">7:30 PM</option>
-  <option value="8:00pm">8:00 PM</option>
-  <option value="8:30pm">8:30 PM</option>
-  <option value="9:00pm">9:00 PM</option>
-  <option value="9:30pm">9:30 PM</option>
-  <option value="10:00pm">10:00 PM</option>
-  <option value="10:30pm">10:30 PM</option>
-  <option value="11:00pm">11:00 PM</option>
-  <option value="11:30pm">11:30 PM</option>
-  <option value="12:00am">12:00 AM</option>
-  <option value="12:30am">12:30 AM</option>
+  <?php
+  include_once('../includes/database.php');
+  ini_set("display_errors", "on");
+  $sql = "SELECT id_hora, hora
+  FROM public.hora;
+;";
+  $ok = true;
+  $rs = pg_query( $conexion, $sql );
+  while( $objFila = pg_fetch_object($rs) ){
+  echo '<option value="'.$objFila->hora.'">'.$objFila->hora.'</option>';
+  };
+  ?>
   </select>
   <br>
 </div>
  <div class="col-sm-6">
  Salida:
 <select class="form-control"  required="required" name="jueves_s" id="jueves_s">
-  <option value="Libre">Libre</option>
-  <option value="1:00am">1:00 AM</option>
-  <option value="1:30am">1:30 AM</option>
-  <option value="2:00am">2:00 AM</option>
-  <option value="2:30am">2:30 AM</option>
-  <option value="3:00am">3:00 AM</option>
-  <option value="3:30am">3:30 AM</option>
-  <option value="4:00am">4:00 AM</option>
-  <option value="4:30am">4:30 AM</option>
-  <option value="5:00am">5:00 AM</option>
-  <option value="5:30am">5:30 AM</option>
-  <option value="6:00am">6:00 AM</option>
-  <option value="6:30am">6:30 AM</option>
-  <option value="7:00am">7:00 AM</option>
-  <option value="7:30am">7:30 AM</option>
-  <option value="8:00am">8:00 AM</option>
-  <option value="8:30am">8:30 AM</option>
-  <option value="9:00am">9:00 AM</option>
-  <option value="9:30am">9:30 AM</option>
-  <option value="10:00am">10:00 AM</option>
-  <option value="10:30am">10:30 AM</option>
-  <option value="11:00am">11:00 AM</option>
-  <option value="11:30am">11:30 AM</option>
-  <option value="12:00pm">12:00 PM</option>
-  <option value="12:30pm">12:30 PM</option>
-  <option value="1:00pm">1:00 PM</option>
-  <option value="1:30pm">1:30 PM</option>
-  <option value="2:00pm">2:00 PM</option>
-  <option value="2:30pm">2:30 PM</option>
-  <option value="3:00pm">3:00 PM</option>
-  <option value="3:30pm">3:30 PM</option>
-  <option value="4:00pm">4:00 PM</option>
-  <option value="4:30pm">4:30 PM</option>
-  <option value="5:00pm">5:00 PM</option>
-  <option value="5:30pm">5:30 PM</option>
-  <option value="6:00pm">6:00 PM</option>
-  <option value="6:30pm">6:30 PM</option>
-  <option value="7:00pm">7:00 PM</option>
-  <option value="7:30pm">7:30 PM</option>
-  <option value="8:00pm">8:00 PM</option>
-  <option value="8:30pm">8:30 PM</option>
-  <option value="9:00pm">9:00 PM</option>
-  <option value="9:30pm">9:30 PM</option>
-  <option value="10:00pm">10:00 PM</option>
-  <option value="10:30pm">10:30 PM</option>
-  <option value="11:00pm">11:00 PM</option>
-  <option value="11:30pm">11:30 PM</option>
-  <option value="12:00am">12:00 AM</option>
-  <option value="12:30am">12:30 AM</option>
+  <?php
+  include_once('../includes/database.php');
+  ini_set("display_errors", "on");
+  $sql = "SELECT id_hora, hora
+  FROM public.hora;
+;";
+  $ok = true;
+  $rs = pg_query( $conexion, $sql );
+  while( $objFila = pg_fetch_object($rs) ){
+  echo '<option value="'.$objFila->hora.'">'.$objFila->hora.'</option>';
+  };
+  ?>
   </select>
   <br>
 </div>
@@ -524,110 +225,36 @@
 <div class="col-sm-6">
  Entrada:
 <select class="form-control"  required="required" name="viernes_e" id="viernes_e">
-  <option value="Libre">Libre</option>
-  <option value="1:00am">1:00 AM</option>
-  <option value="1:30am">1:30 AM</option>
-  <option value="2:00am">2:00 AM</option>
-  <option value="2:30am">2:30 AM</option>
-  <option value="3:00am">3:00 AM</option>
-  <option value="3:30am">3:30 AM</option>
-  <option value="4:00am">4:00 AM</option>
-  <option value="4:30am">4:30 AM</option>
-  <option value="5:00am">5:00 AM</option>
-  <option value="5:30am">5:30 AM</option>
-  <option value="6:00am">6:00 AM</option>
-  <option value="6:30am">6:30 AM</option>
-  <option value="7:00am">7:00 AM</option>
-  <option value="7:30am">7:30 AM</option>
-  <option value="8:00am">8:00 AM</option>
-  <option value="8:30am">8:30 AM</option>
-  <option value="9:00am">9:00 AM</option>
-  <option value="9:30am">9:30 AM</option>
-  <option value="10:00am">10:00 AM</option>
-  <option value="10:30am">10:30 AM</option>
-  <option value="11:00am">11:00 AM</option>
-  <option value="11:30am">11:30 AM</option>
-  <option value="12:00pm">12:00 PM</option>
-  <option value="12:30pm">12:30 PM</option>
-  <option value="1:00pm">1:00 PM</option>
-  <option value="1:30pm">1:30 PM</option>
-  <option value="2:00pm">2:00 PM</option>
-  <option value="2:30pm">2:30 PM</option>
-  <option value="3:00pm">3:00 PM</option>
-  <option value="3:30pm">3:30 PM</option>
-  <option value="4:00pm">4:00 PM</option>
-  <option value="4:30pm">4:30 PM</option>
-  <option value="5:00pm">5:00 PM</option>
-  <option value="5:30pm">5:30 PM</option>
-  <option value="6:00pm">6:00 PM</option>
-  <option value="6:30pm">6:30 PM</option>
-  <option value="7:00pm">7:00 PM</option>
-  <option value="7:30pm">7:30 PM</option>
-  <option value="8:00pm">8:00 PM</option>
-  <option value="8:30pm">8:30 PM</option>
-  <option value="9:00pm">9:00 PM</option>
-  <option value="9:30pm">9:30 PM</option>
-  <option value="10:00pm">10:00 PM</option>
-  <option value="10:30pm">10:30 PM</option>
-  <option value="11:00pm">11:00 PM</option>
-  <option value="11:30pm">11:30 PM</option>
-  <option value="12:00am">12:00 AM</option>
-  <option value="12:30am">12:30 AM</option>
+    <?php
+  include_once('../includes/database.php');
+  ini_set("display_errors", "on");
+  $sql = "SELECT id_hora, hora
+  FROM public.hora;
+;";
+  $ok = true;
+  $rs = pg_query( $conexion, $sql );
+  while( $objFila = pg_fetch_object($rs) ){
+  echo '<option value="'.$objFila->hora.'">'.$objFila->hora.'</option>';
+  };
+  ?>
   </select>
   <br>
 </div>
  <div class="col-sm-6">
  Salida:
 <select class="form-control"  required="required" name="viernes_s" id="viernes_s">
-  <option value="Libre">Libre</option>
-  <option value="1:00am">1:00 AM</option>
-  <option value="1:30am">1:30 AM</option>
-  <option value="2:00am">2:00 AM</option>
-  <option value="2:30am">2:30 AM</option>
-  <option value="3:00am">3:00 AM</option>
-  <option value="3:30am">3:30 AM</option>
-  <option value="4:00am">4:00 AM</option>
-  <option value="4:30am">4:30 AM</option>
-  <option value="5:00am">5:00 AM</option>
-  <option value="5:30am">5:30 AM</option>
-  <option value="6:00am">6:00 AM</option>
-  <option value="6:30am">6:30 AM</option>
-  <option value="7:00am">7:00 AM</option>
-  <option value="7:30am">7:30 AM</option>
-  <option value="8:00am">8:00 AM</option>
-  <option value="8:30am">8:30 AM</option>
-  <option value="9:00am">9:00 AM</option>
-  <option value="9:30am">9:30 AM</option>
-  <option value="10:00am">10:00 AM</option>
-  <option value="10:30am">10:30 AM</option>
-  <option value="11:00am">11:00 AM</option>
-  <option value="11:30am">11:30 AM</option>
-  <option value="12:00pm">12:00 PM</option>
-  <option value="12:30pm">12:30 PM</option>
-  <option value="1:00pm">1:00 PM</option>
-  <option value="1:30pm">1:30 PM</option>
-  <option value="2:00pm">2:00 PM</option>
-  <option value="2:30pm">2:30 PM</option>
-  <option value="3:00pm">3:00 PM</option>
-  <option value="3:30pm">3:30 PM</option>
-  <option value="4:00pm">4:00 PM</option>
-  <option value="4:30pm">4:30 PM</option>
-  <option value="5:00pm">5:00 PM</option>
-  <option value="5:30pm">5:30 PM</option>
-  <option value="6:00pm">6:00 PM</option>
-  <option value="6:30pm">6:30 PM</option>
-  <option value="7:00pm">7:00 PM</option>
-  <option value="7:30pm">7:30 PM</option>
-  <option value="8:00pm">8:00 PM</option>
-  <option value="8:30pm">8:30 PM</option>
-  <option value="9:00pm">9:00 PM</option>
-  <option value="9:30pm">9:30 PM</option>
-  <option value="10:00pm">10:00 PM</option>
-  <option value="10:30pm">10:30 PM</option>
-  <option value="11:00pm">11:00 PM</option>
-  <option value="11:30pm">11:30 PM</option>
-  <option value="12:00am">12:00 AM</option>
-  <option value="12:30am">12:30 AM</option>
+    <?php
+  include_once('../includes/database.php');
+  ini_set("display_errors", "on");
+  $sql = "SELECT id_hora, hora
+  FROM public.hora;
+;";
+  $ok = true;
+  $rs = pg_query( $conexion, $sql );
+  while( $objFila = pg_fetch_object($rs) ){
+  echo '<option value="'.$objFila->hora.'">'.$objFila->hora.'</option>';
+  };
+  ?>
   </select>
   <br>
 </div>
@@ -640,110 +267,36 @@
 <div class="col-sm-6">
  Entrada:
 <select class="form-control"  required="required" name="sabado_e" id="sabado_e">
-  <option value="Libre">Libre</option>
-  <option value="1:00am">1:00 AM</option>
-  <option value="1:30am">1:30 AM</option>
-  <option value="2:00am">2:00 AM</option>
-  <option value="2:30am">2:30 AM</option>
-  <option value="3:00am">3:00 AM</option>
-  <option value="3:30am">3:30 AM</option>
-  <option value="4:00am">4:00 AM</option>
-  <option value="4:30am">4:30 AM</option>
-  <option value="5:00am">5:00 AM</option>
-  <option value="5:30am">5:30 AM</option>
-  <option value="6:00am">6:00 AM</option>
-  <option value="6:30am">6:30 AM</option>
-  <option value="7:00am">7:00 AM</option>
-  <option value="7:30am">7:30 AM</option>
-  <option value="8:00am">8:00 AM</option>
-  <option value="8:30am">8:30 AM</option>
-  <option value="9:00am">9:00 AM</option>
-  <option value="9:30am">9:30 AM</option>
-  <option value="10:00am">10:00 AM</option>
-  <option value="10:30am">10:30 AM</option>
-  <option value="11:00am">11:00 AM</option>
-  <option value="11:30am">11:30 AM</option>
-  <option value="12:00pm">12:00 PM</option>
-  <option value="12:30pm">12:30 PM</option>
-  <option value="1:00pm">1:00 PM</option>
-  <option value="1:30pm">1:30 PM</option>
-  <option value="2:00pm">2:00 PM</option>
-  <option value="2:30pm">2:30 PM</option>
-  <option value="3:00pm">3:00 PM</option>
-  <option value="3:30pm">3:30 PM</option>
-  <option value="4:00pm">4:00 PM</option>
-  <option value="4:30pm">4:30 PM</option>
-  <option value="5:00pm">5:00 PM</option>
-  <option value="5:30pm">5:30 PM</option>
-  <option value="6:00pm">6:00 PM</option>
-  <option value="6:30pm">6:30 PM</option>
-  <option value="7:00pm">7:00 PM</option>
-  <option value="7:30pm">7:30 PM</option>
-  <option value="8:00pm">8:00 PM</option>
-  <option value="8:30pm">8:30 PM</option>
-  <option value="9:00pm">9:00 PM</option>
-  <option value="9:30pm">9:30 PM</option>
-  <option value="10:00pm">10:00 PM</option>
-  <option value="10:30pm">10:30 PM</option>
-  <option value="11:00pm">11:00 PM</option>
-  <option value="11:30pm">11:30 PM</option>
-  <option value="12:00am">12:00 AM</option>
-  <option value="12:30am">12:30 AM</option>
+    <?php
+  include_once('../includes/database.php');
+  ini_set("display_errors", "on");
+  $sql = "SELECT id_hora, hora
+  FROM public.hora;
+;";
+  $ok = true;
+  $rs = pg_query( $conexion, $sql );
+  while( $objFila = pg_fetch_object($rs) ){
+  echo '<option value="'.$objFila->hora.'">'.$objFila->hora.'</option>';
+  };
+  ?>
   </select>
   <br>
 </div>
 <div class="col-sm-6">
  Salida:
 <select class="form-control"  required="required" name="sabado_s" id="sabado_s">
-  <option value="Libre">Libre</option>
-  <option value="1:00am">1:00 AM</option>
-  <option value="1:30am">1:30 AM</option>
-  <option value="2:00am">2:00 AM</option>
-  <option value="2:30am">2:30 AM</option>
-  <option value="3:00am">3:00 AM</option>
-  <option value="3:30am">3:30 AM</option>
-  <option value="4:00am">4:00 AM</option>
-  <option value="4:30am">4:30 AM</option>
-  <option value="5:00am">5:00 AM</option>
-  <option value="5:30am">5:30 AM</option>
-  <option value="6:00am">6:00 AM</option>
-  <option value="6:30am">6:30 AM</option>
-  <option value="7:00am">7:00 AM</option>
-  <option value="7:30am">7:30 AM</option>
-  <option value="8:00am">8:00 AM</option>
-  <option value="8:30am">8:30 AM</option>
-  <option value="9:00am">9:00 AM</option>
-  <option value="9:30am">9:30 AM</option>
-  <option value="10:00am">10:00 AM</option>
-  <option value="10:30am">10:30 AM</option>
-  <option value="11:00am">11:00 AM</option>
-  <option value="11:30am">11:30 AM</option>
-  <option value="12:00pm">12:00 PM</option>
-  <option value="12:30pm">12:30 PM</option>
-  <option value="1:00pm">1:00 PM</option>
-  <option value="1:30pm">1:30 PM</option>
-  <option value="2:00pm">2:00 PM</option>
-  <option value="2:30pm">2:30 PM</option>
-  <option value="3:00pm">3:00 PM</option>
-  <option value="3:30pm">3:30 PM</option>
-  <option value="4:00pm">4:00 PM</option>
-  <option value="4:30pm">4:30 PM</option>
-  <option value="5:00pm">5:00 PM</option>
-  <option value="5:30pm">5:30 PM</option>
-  <option value="6:00pm">6:00 PM</option>
-  <option value="6:30pm">6:30 PM</option>
-  <option value="7:00pm">7:00 PM</option>
-  <option value="7:30pm">7:30 PM</option>
-  <option value="8:00pm">8:00 PM</option>
-  <option value="8:30pm">8:30 PM</option>
-  <option value="9:00pm">9:00 PM</option>
-  <option value="9:30pm">9:30 PM</option>
-  <option value="10:00pm">10:00 PM</option>
-  <option value="10:30pm">10:30 PM</option>
-  <option value="11:00pm">11:00 PM</option>
-  <option value="11:30pm">11:30 PM</option>
-  <option value="12:00am">12:00 AM</option>
-  <option value="12:30am">12:30 AM</option>
+  <?php
+  include_once('../includes/database.php');
+  ini_set("display_errors", "on");
+  $sql = "SELECT id_hora, hora
+  FROM public.hora;
+;";
+  $ok = true;
+  $rs = pg_query( $conexion, $sql );
+  while( $objFila = pg_fetch_object($rs) ){
+  echo '<option value="'.$objFila->hora.'">'.$objFila->hora.'</option>';
+  };
+  ?>
   </select>
   <br>
 </div>
@@ -756,110 +309,36 @@
 <div class="col-sm-6">
  Entrada:
 <select class="form-control"  required="required" name="domingo_e" id="domingo_e">
-  <option value="Libre">Libre</option>
-  <option value="1:00am">1:00 AM</option>
-  <option value="1:30am">1:30 AM</option>
-  <option value="2:00am">2:00 AM</option>
-  <option value="2:30am">2:30 AM</option>
-  <option value="3:00am">3:00 AM</option>
-  <option value="3:30am">3:30 AM</option>
-  <option value="4:00am">4:00 AM</option>
-  <option value="4:30am">4:30 AM</option>
-  <option value="5:00am">5:00 AM</option>
-  <option value="5:30am">5:30 AM</option>
-  <option value="6:00am">6:00 AM</option>
-  <option value="6:30am">6:30 AM</option>
-  <option value="7:00am">7:00 AM</option>
-  <option value="7:30am">7:30 AM</option>
-  <option value="8:00am">8:00 AM</option>
-  <option value="8:30am">8:30 AM</option>
-  <option value="9:00am">9:00 AM</option>
-  <option value="9:30am">9:30 AM</option>
-  <option value="10:00am">10:00 AM</option>
-  <option value="10:30am">10:30 AM</option>
-  <option value="11:00am">11:00 AM</option>
-  <option value="11:30am">11:30 AM</option>
-  <option value="12:00pm">12:00 PM</option>
-  <option value="12:30pm">12:30 PM</option>
-  <option value="1:00pm">1:00 PM</option>
-  <option value="1:30pm">1:30 PM</option>
-  <option value="2:00pm">2:00 PM</option>
-  <option value="2:30pm">2:30 PM</option>
-  <option value="3:00pm">3:00 PM</option>
-  <option value="3:30pm">3:30 PM</option>
-  <option value="4:00pm">4:00 PM</option>
-  <option value="4:30pm">4:30 PM</option>
-  <option value="5:00pm">5:00 PM</option>
-  <option value="5:30pm">5:30 PM</option>
-  <option value="6:00pm">6:00 PM</option>
-  <option value="6:30pm">6:30 PM</option>
-  <option value="7:00pm">7:00 PM</option>
-  <option value="7:30pm">7:30 PM</option>
-  <option value="8:00pm">8:00 PM</option>
-  <option value="8:30pm">8:30 PM</option>
-  <option value="9:00pm">9:00 PM</option>
-  <option value="9:30pm">9:30 PM</option>
-  <option value="10:00pm">10:00 PM</option>
-  <option value="10:30pm">10:30 PM</option>
-  <option value="11:00pm">11:00 PM</option>
-  <option value="11:30pm">11:30 PM</option>
-  <option value="12:00am">12:00 AM</option>
-  <option value="12:30am">12:30 AM</option>
+  <?php
+  include_once('../includes/database.php');
+  ini_set("display_errors", "on");
+  $sql = "SELECT id_hora, hora
+  FROM public.hora;
+;";
+  $ok = true;
+  $rs = pg_query( $conexion, $sql );
+  while( $objFila = pg_fetch_object($rs) ){
+  echo '<option value="'.$objFila->hora.'">'.$objFila->hora.'</option>';
+  };
+  ?>
   </select>
   <br>
 </div>
 <div class="col-sm-6">
  Salida:
 <select class="form-control"  required="required" name="domingo_s" id="domingo_s">
-  <option value="Libre">Libre</option>
-  <option value="1:00am">1:00 AM</option>
-  <option value="1:30am">1:30 AM</option>
-  <option value="2:00am">2:00 AM</option>
-  <option value="2:30am">2:30 AM</option>
-  <option value="3:00am">3:00 AM</option>
-  <option value="3:30am">3:30 AM</option>
-  <option value="4:00am">4:00 AM</option>
-  <option value="4:30am">4:30 AM</option>
-  <option value="5:00am">5:00 AM</option>
-  <option value="5:30am">5:30 AM</option>
-  <option value="6:00am">6:00 AM</option>
-  <option value="6:30am">6:30 AM</option>
-  <option value="7:00am">7:00 AM</option>
-  <option value="7:30am">7:30 AM</option>
-  <option value="8:00am">8:00 AM</option>
-  <option value="8:30am">8:30 AM</option>
-  <option value="9:00am">9:00 AM</option>
-  <option value="9:30am">9:30 AM</option>
-  <option value="10:00am">10:00 AM</option>
-  <option value="10:30am">10:30 AM</option>
-  <option value="11:00am">11:00 AM</option>
-  <option value="11:30am">11:30 AM</option>
-  <option value="12:00pm">12:00 PM</option>
-  <option value="12:30pm">12:30 PM</option>
-  <option value="1:00pm">1:00 PM</option>
-  <option value="1:30pm">1:30 PM</option>
-  <option value="2:00pm">2:00 PM</option>
-  <option value="2:30pm">2:30 PM</option>
-  <option value="3:00pm">3:00 PM</option>
-  <option value="3:30pm">3:30 PM</option>
-  <option value="4:00pm">4:00 PM</option>
-  <option value="4:30pm">4:30 PM</option>
-  <option value="5:00pm">5:00 PM</option>
-  <option value="5:30pm">5:30 PM</option>
-  <option value="6:00pm">6:00 PM</option>
-  <option value="6:30pm">6:30 PM</option>
-  <option value="7:00pm">7:00 PM</option>
-  <option value="7:30pm">7:30 PM</option>
-  <option value="8:00pm">8:00 PM</option>
-  <option value="8:30pm">8:30 PM</option>
-  <option value="9:00pm">9:00 PM</option>
-  <option value="9:30pm">9:30 PM</option>
-  <option value="10:00pm">10:00 PM</option>
-  <option value="10:30pm">10:30 PM</option>
-  <option value="11:00pm">11:00 PM</option>
-  <option value="11:30pm">11:30 PM</option>
-  <option value="12:00am">12:00 AM</option>
-  <option value="12:30am">12:30 AM</option>
+   <?php
+  include_once('../includes/database.php');
+  ini_set("display_errors", "on");
+  $sql = "SELECT id_hora, hora
+  FROM public.hora;
+;";
+  $ok = true;
+  $rs = pg_query( $conexion, $sql );
+  while( $objFila = pg_fetch_object($rs) ){
+  echo '<option value="'.$objFila->hora.'">'.$objFila->hora.'</option>';
+  };
+  ?>
   </select>
   <br>
 </div>
@@ -870,18 +349,17 @@
                             Descripcion del horario:
                         </label>
                          <div class="col-lg-12">
-<input class="form-control" id="deshor" type="text"  placeholder="Escribir descripcion del horario" name="deshor" required="">
+<input class="form-control"  id="deshor" type="text"  placeholder="Escribir descripcion del horario" name="deshor" required="">
 </div>
 </div>
-
-        <div class="form-group">
-        <label for="lunes" class="col-sm-9 control-label">
-        <span >
+        <div class="col-lg-12 text-center">
         <br>
-          <button type="submit"  class="btn btn-primary " type="button" onclick="loadLog()">Ingresar</button>
-          </span>
-          </label>
-          </div>
+            <div class="form-group">
+      <span >
+          <button type="submit"  class="btn btn-primary " type="button" onclick="loadLog()">Crear</button>
+      </span>
+        </div>
+        </div>
             </div> 
  </div>
  </div>

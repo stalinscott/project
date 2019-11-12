@@ -47,7 +47,7 @@ function borrarhorario( $conexion, $decodificado )
   
   if( $ok == false )
     echo "<br><div class='panel panel-danger'>
-      <div class='panel-heading'>Error al borrar los datos.<A HREF='../vista/consultar_horario_root.php' title='Modificar'><IMG align='right' SRC='../images/revisar.png' ALT='modificar'></A>";
+      <div class='panel-heading'>Error al borrar los datos.<A HREF='../vista/consultar_horario_talento.php' title='Modificar'><IMG align='right' SRC='../images/revisar.png' ALT='modificar'></A>";
   else
     echo "<br><div class='panel panel-success'>
       <div class='panel-heading'>Horario Borrado<img align='right' src='../images/marcar.png' class='img-circle' alt='Cinque Terre'> </div>

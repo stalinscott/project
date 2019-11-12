@@ -68,7 +68,7 @@
                <td><b>Entrada:</b><br>".$obj->domingo_e."<br><b>Salida:</b><br>".$obj->domingo_s." </td>
                </tr>";
                echo "</table><div class='well well-sm'><center>¿Seguro desea eliminar este horario?</Center></div>
-            <center><a  href='../vista/postborrarhorario.php?id=".$codificado = base64_encode($obj->id_horario)."' class='btn btn-success' role='button'>Si</a>
+            <center><a  href='../vista/postborrarhorario_talento.php?id=".$codificado = base64_encode($obj->id_horario)."' class='btn btn-success' role='button'>Si</a>
                <a  href='../vista/consultar_horario_talento.php' class='btn btn-danger role='button'>No</a></center></div>";
               }
             else
