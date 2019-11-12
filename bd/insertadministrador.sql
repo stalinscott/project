@@ -1,5 +1,5 @@
 INSERT INTO public.administrador(
             cedper, usuario, clave, depuniadm, oficuniadm, minorguniadm, 
             uniuniadm, prouniadm, id_rol)
-    VALUES ('22746550', '3030', '123456', '0', '1', '103', 
-            '1', '0', '1');
+    VALUES ('2963906', '1', '1', '0000', '0000', '0000', 
+            '0000', '0000', '1');
