@@ -7,7 +7,10 @@ $(document).ready(function(){
 		var cla2=$("#cla2").val();
 		var id_rol=$("#id_rol").val();
 		console.log(cedper,cla1,cla2,id_rol);
-		if (usuario==0) {
+		if (sno_unidadadm==0) {
+            alert("El campo Departamento no puede estar vacio");
+            return false;
+        } else if (usuario==0) {
             alert("El campo usuario no puede estar vacio");
             return false;
         } else if (cla1==0) {
@@ -32,9 +35,14 @@ $(document).ready(function(){
 				window.location='../vista/consultar_empleado.php';
 				}if(response.respuesta==2){
 				$("#mensaje").html(response.mensaje);
-				alert('Usuario existe en la base de dato.');
+				alert('Esta cedula ya esta registrada en la base de dato.');
 				window.location='../vista/crear_empleado.php';
-				}else{
+				}if(response.respuesta==3){
+				$("#mensaje").html(response.mensaje);
+				alert('Esta cedula ya esta registrada en la base de dato.');
+				window.location='../vista/crear_empleado.php';
+				}
+				else{
 					$("#mensaje").html(response.mensaje);
 					alert('Usuario o contraseña incorrecta.');
 				}

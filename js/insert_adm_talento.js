@@ -29,7 +29,7 @@ $(document).ready(function(){
 				if(response.respuesta==1){
 				$("#mensaje").html(response.mensaje);
 				alert('Portador de la cedula de identidad, ya posee un departamento asignado.');
-				window.location='../vista/consultar_administrador_talento.php';
+				window.location='../vista/crear_admi_talento.php';
 				}if(response.respuesta==2){
 				$("#mensaje").html(response.mensaje);
 				alert('Usuario existe en la base de dato.');
