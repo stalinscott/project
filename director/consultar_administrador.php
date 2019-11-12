@@ -1,33 +1,28 @@
 
 <div class="row">
 <div class="col-xs-12 text-left">
-    <br>
-    </div>
+		<br>
+		</div>
 </div>
-    <div class="row">
-    <div class="col-sm-3 text-left">
+		<div class="row">
+		<div class="col-sm-3 text-left">
 <div class="sidebar-nav">
       <div class="navbar navbar-default" role="navigation">
         <div class="navbar-collapse collapse sidebar-navbar-collapse">
           <ul class="nav navbar-nav">
-          <li><a href="asistencia_director.php"><img src="../images/1.2.png" alt="#"/> Asistencia</a></li>
-           <li class="active"><a href="../vista/crear_horario_director.php"> <img src="../images/1.1.png" alt="#"/> Horario</a></li>
-          <li><a href="../vista/justificar_dia_director.php"> <img src="../images/1.2.png" alt="#"/> Justificar</a></li>
-            <li><a href="consultar_asistencia_director.php"> <img src="../images/1.2.png" alt="#"/> Consultar</a></li>
+          <li><a href="administrador_director.php"><img src="../images/1.2.png" alt="#"/> Administrador</a></li>
+            <li><a href="crear_admi_director.php"><img src="../images/1.2.png" alt="#"/> Crear</a></li>
+            <li  class="active"><a href="consultar_administrador_director.php"><img src="../images/1.1.png" alt="#"/> Consultar</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
     </div>
   </div>
   <div class="col-sm-9 text-left">
-      <div class="panel-heading">
-        <h2  align="center">Horario</h2>
-        <ul class="nav nav-tabs">
-  <li><a href="../vista/crear_horario_director.php">Crear Horario</a></li>
-  <li class="active"><a href="../vista/consultar_horario_director.php">Consultar Horarios</a></li>
-</ul>
+ <div class="panel-heading">
+   <h2  align="center">Consultar Administradores</h2>
+   </div>
       <div id="login">        
-<div class='container-fluid'>
 <h2> Departamento:</h2>
   <div class="form-group">
       <div class="col-lg-6">
@@ -54,8 +49,6 @@
           </span>
     </div>
   
-</div>
-</div>
 <br>
        
             </div>
@@ -72,14 +65,15 @@ function loadLog() {
     document.getElementById("login").innerHTML = xhttp.responseText;
     }
   };
-    xhttp.open("POST", "../director/postconsultarhorario.php", true);
+    xhttp.open("POST", "../director/postconsultaradministrador.php", true);
   xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
   xhttp.send("sno_unidadadm="+sno_unidadadm+"");
 }
 </script>
-     
     </div>
-    
+		</div>
+  
+		
 
 </body>
 </html>

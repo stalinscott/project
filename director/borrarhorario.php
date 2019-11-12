@@ -1,10 +1,10 @@
 <div class="row">
 <div class="col-xs-12 text-left">
-		<br>
-		</div>
+    <br>
+    </div>
 </div>
-		<div class="row">
-		 <div class="col-sm-3 text-left">
+    <div class="row">
+  <div class="col-sm-3 text-left">
 <div class="sidebar-nav">
       <div class="navbar navbar-default" role="navigation">
         <div class="navbar-collapse collapse sidebar-navbar-collapse">
@@ -18,7 +18,7 @@
       </div>
     </div>
   </div>
-  <div class="col-sm-9 text-left">
+   <div class="col-sm-9 text-left">
       <div id="login"> 
   <div class="container-fluid">
 <br>
@@ -59,13 +59,13 @@
             
             <tr class='table-primary'>
             <td>".$obj->deshor." </td>
-                <td>Entrada: ".$obj->lunes_e." <br> Salida: ".$obj->lunes_s." </td>
-                <td>Entrada: ".$obj->martes_e." <br> Salida: ".$obj->martes_s." </td>
-                <td>Entrada: ".$obj->miercoles_e." <br> Salida: ".$obj->miercoles_s."</td>
-               <td>Entrada: ".$obj->jueves_e." <br> Salida: ".$obj->jueves_s." </td>
-               <td>Entrada: ".$obj->viernes_e." <br> Salida: ".$obj->viernes_s." </td>
-               <td>Entrada: ".$obj->sabado_e." <br> Salida: ".$obj->sabado_s." </td>
-               <td>Entrada: ".$obj->domingo_e." <br> Salida: ".$obj->domingo_s." </td>
+                <td><b>Entrada:</b><br>".$obj->lunes_e." <br> <b>Salida:</b><br>".$obj->lunes_s." </td>
+               <td><b>Entrada:</b><br>".$obj->martes_e."<br> <b>Salida:</b><br>".$obj->martes_s." </td>
+               <td><b>Entrada:</b><br>".$obj->miercoles_e."<br> <b>Salida:</b><br>".$obj->miercoles_s." </td>
+               <td><b>Entrada:</b><br>".$obj->jueves_e."<br> <b>Salida:</b><br>".$obj->jueves_s." </td>
+               <td><b>Entrada:</b><br>".$obj->viernes_e."<br><b>Salida:</b><br>".$obj->viernes_s." </td>
+               <td><b>Entrada:</b><br>".$obj->sabado_e."<br><b>Salida:</b><br>".$obj->sabado_s." </td>
+               <td><b>Entrada:</b><br>".$obj->domingo_e."<br><b>Salida:</b><br>".$obj->domingo_s." </td>
                </tr>";
                echo "</table><div class='well well-sm'><center>¿Seguro desea eliminar este horario?</Center></div>
             <center><a  href='../vista/postborrarhorario_director.php?id=".$codificado = base64_encode($obj->id_horario)."' class='btn btn-success' role='button'>Si</a>
@@ -78,10 +78,8 @@
             ?>
     </div>
     </div>
-		</div>
-		
+    </div>
+    
 
 </body>
 </html>
-
-

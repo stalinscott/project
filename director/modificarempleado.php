@@ -1,11 +1,10 @@
-
 <div class="row">
 <div class="col-xs-12 text-left">
     <br>
     </div>
 </div>
     <div class="row">
-    <div class="col-sm-3 text-left">
+   <div class="col-sm-3 text-left">
 <div class="sidebar-nav">
       <div class="navbar navbar-default" role="navigation">
         <div class="navbar-collapse collapse sidebar-navbar-collapse">
@@ -18,17 +17,20 @@
       </div>
     </div>
   </div>
- <div class="col-sm-9 text-left">
+  <div class="col-sm-9 text-left">
   <div id="login"> 
   <div class="container-fluid">
+<br>
+<div class="col-sm-9">
 <div class="panel-heading">
         <h2  align="center"> Modificar Empleado</h2>
       </div> 
       <?php
+      ini_set("display_errors", "on");
     include_once('../includes/database.php');
-     $id=$_GET["id"];
-       $decodificado = base64_decode($id);
-     
+  
+      $id=$_GET["id"];
+        $decodificado = base64_decode($id);
         function listarPersonas( $conexion, $decodificado )
         {
             $sql = "SELECT empleado.cedper,empleado.clave, empleado.id_rol
@@ -43,23 +45,26 @@
 <label for="cla1" class="col-lg-3 control-label">
                             Cedula:
                         </label>
-                        
+                         
 <input class="form-control" id="cedper" type="cedper"  placeholder="Cedula de identidad" name="cedper" required="" disabled <?php
   echo "value=".$obj->cedper.">";
                           ?>
 
-<label for="cla1" class="col-lg-3 control-label">
+<br><label for="cla1" class="col-lg-3 control-label">
                             Contraseña:
                         </label>
-                       
-<input class="form-control" id="cla1" type="password"  placeholder="Escribir contraseña" name="cla1" required="">
+<input class="form-control" id="cla1" type="password"  placeholder="Escribir contraseña" name="cla1" required=""<?php
+  echo "value=".$obj->clave.">";
+                          ?>
 
-<label for="cla2" class="col-lg-3 control-label">
+<br><label for="cla2" class="col-lg-6 control-label">
                             Repetir contraseña:
                         </label>
-                         
-<input class="form-control" id="cla2" type="password"  placeholder="Escribir contraseña" name="cla2" required="">
-     
+<input class="form-control" id="cla2" type="password"  placeholder="Escribir contraseña" name="cla2" required=""<?php
+  echo "value=".$obj->clave.">";
+                          ?>
+<br>
+      
 <label for="id_rol" class="col-lg-3 control-label">
                             Rol:
                         </label>
@@ -77,17 +82,16 @@
   ?>
   </select>
 
-
         <label for="lunes" class="col-sm-9 control-label">
         <span >
-        <br>
         <center>
-          <button type="submit"  class="btn btn-warning" type="button" onclick="loadLog()">Modificar</button>
+          <br><button type="submit"  class="btn btn-warning" type="button" onclick="loadLog()">Modificar</button>
           <a href='../vista/consultar_empleado_director.php' class='btn btn-info' role='button'>Volver</a>
           </center>
           </span>
           </label>
-      
+          </div>
+          </div>
 
                     </div>
                     </div>
@@ -100,7 +104,6 @@
                 $ok = false;
             return $ok;
         }
-              $id=$_GET["id"];
     $ok = listarPersonas( $conexion, $decodificado );
     ?>
 
@@ -154,3 +157,5 @@ function loadLog() {
   xhttp.send("&cedper="+cedper+"&cla1="+cla1+"&id_rol="+id_rol+"");
 }
 </script>
+    
+

@@ -1,11 +1,10 @@
-
 <div class="row">
 <div class="col-xs-12 text-left">
-		<br>
-		</div>
+    <br>
+    </div>
 </div>
-		<div class="row">
-		<div class="col-sm-3 text-left">
+    <div class="row">
+      <div class="col-sm-3 text-left">
 <div class="sidebar-nav">
       <div class="navbar navbar-default" role="navigation">
         <div class="navbar-collapse collapse sidebar-navbar-collapse">
@@ -22,15 +21,15 @@
   <div id="login"> 
   <div class="container-fluid">
 <br>
+<div class="col-sm-9">
 <div class="panel-heading">
         <h2  align="center"> Modificar Administrador</h2>
       </div> 
       <?php    
       include_once('../includes/database.php');
-           $id=$_GET["id"];
+      $id=$_GET["id"];
        $decodificado = base64_decode($id);
- 
-        function listarPersonas( $conexion, $decodificado )
+        function listarPersonas( $conexion, $decodificado)
         {
             $sql = "SELECT administrador.cedper, administrador.usuario, administrador.clave, administrador.depuniadm, administrador.ofiuniadm, administrador.minorguniadm, 
        administrador.uniuniadm, administrador.prouniadm, administrador.id_rol
@@ -41,37 +40,22 @@
             if( $obj = pg_fetch_object($rs))
             {
             ?>
-<label for="cla1" class="col-lg-3 control-label">
-                            Cedula:
-                        </label>
+                            <label for="cedper" class="col-lg-3 control-label">Cedula:</label>
 <input class="form-control" id="cedper" type="cedper"  placeholder="Cedula de identidad" name="cedper" required="" disabled <?php
   echo "value=".$obj->cedper.">";
                           ?>
-
-<label for="usuario" class="col-lg-3 control-label">
-                            Usuario:
-                        </label>
-                        
-<input class="form-control" id="usuario" type="text"  placeholder="Escribir usuario" name="usuario" required="" disabled onkeypress="return validarnumeros(event)" <?php
-  echo "value=".$obj->usuario.">";
+                            <br><label for="cedper" class="col-lg-3 control-label">Usuario:</label>
+<input class="form-control" id="usuario" type="usuario"  placeholder="Cedula de identidad" name="usuario" required="" disabled <?php
+  echo "value=".$obj->usuario.">"; ?>
+                            <br><label for="cedper" class="col-lg-3 control-label">Contraseña:</label>
+<input class="form-control" id="cla1" type="password"  placeholder="Escribir contraseña" name="cla1" required="" <?php
+  echo "value=".$obj->clave.">";
                           ?>
-
-<label for="cla1" class="col-lg-3 control-label">
-                            Contraseña:
-                        </label>
-                    
-<input class="form-control" id="cla1" type="password"  placeholder="Escribir contraseña" name="cla1" required="">
-
-<label for="cla2" class="col-lg-3 control-label">
-                            Repetir contraseña:
-                        </label>
-                      
-<input class="form-control" id="cla2" type="password"  placeholder="Escribir contraseña" name="cla2" required="">
-       
-<label for="id_rol" class="col-lg-3 control-label">
-                            Rol:
-                        </label>
-                  
+                            <br><label for="cedper" class="col-lg-3 control-label">Repetir contraseña:</label>
+<input class="form-control" id="cla2" type="password"  placeholder="Escribir contraseña" name="cla2" required="" <?php
+  echo "value=".$obj->clave.">";
+                          ?>
+                            <br><label for="cedper" class="col-lg-3 control-label">Rol:</label>
 <select class="form-control" required="required" name="id_rol" id="id_rol">
   <?php
   include_once('../includes/database.php');
@@ -84,22 +68,19 @@
   };
   ?>
   </select>
-
-        <label for="lunes" class="col-sm-9 control-label">
+        <br>
         <span >
         <center>
-        <br>
           <button type="submit"  class="btn btn-warning" type="button" onclick="loadLog()">Modificar</button>
-          <a href='../vista/consultar_administrador_director.php' class='btn btn-info' role='button'>Volver</a>
+           <a href='../vista/consultar_administrador_director.php' class='btn btn-info' role='button'>Volver</a>
           </center>
           </span>
-          </label>
-       
+           </div> 
+           </div>
+           </div>
+           </div>
+      
 
-                    </div>
-                    </div>
-
-                </div>
                 
             <?php 
             }
@@ -110,12 +91,6 @@
     $ok = listarPersonas( $conexion, $decodificado );
     ?>
 
-            </div> 
- </div>
- </div>
-    </div>
-    </div>
-    </div>
     
 
 </body>

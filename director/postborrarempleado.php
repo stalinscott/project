@@ -1,4 +1,3 @@
-
 <div class="row">
 <div class="col-xs-12 text-left">
     <br>
@@ -32,23 +31,25 @@ if (isset($_POST))
 }
 
 include_once('../includes/database.php');
-function borrarhorario( $conexion, $id )
+ $id=$_GET["id"];
+        $decodificado = base64_decode($id);
+  $ok = borrarempleado( $conexion, $decodificado );
+function borrarempleado( $conexion, $decodificado )
   {
+    echo "$decodificado";
    $sql = "DELETE FROM public.empleado";
 
     // Si 'id' es diferente de 'null' sólo se borra la persona con el 'id' especificado:
-    if( $id != null )
-      $sql .= " WHERE cedper=".$id;
+    if( $decodificado != null )
+      $sql .= " WHERE cedper=".$decodificado;
 
     // Ejecutamos la consulta (se devolverá true o false):
     return pg_query( $conexion, $sql );
   }
-$id=$_GET["id"];
-  $ok = borrarhorario( $conexion, $id );
   
   if( $ok == false )
     echo "<br><div class='panel panel-danger'>
-      <div class='panel-heading'>Error al borrar los datos.<A HREF='../vista/consultar_horario_director.php' title='Modificar'><IMG align='right' SRC='../images/revisar.png' ALT='modificar'></A>";
+      <div class='panel-heading'>Error al borrar los datos.<A HREF='../vista/consultar_horario_root.php' title='Modificar'><IMG align='right' SRC='../images/revisar.png' ALT='modificar'></A>";
   else
     echo "<br><div class='panel panel-success'>
       <div class='panel-heading'>Empleado Borrado<img align='right' src='../images/marcar.png' class='img-circle' alt='Cinque Terre'> </div>

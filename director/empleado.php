@@ -10,7 +10,7 @@
       <div class="navbar navbar-default" role="navigation">
         <div class="navbar-collapse collapse sidebar-navbar-collapse">
           <ul class="nav navbar-nav">
-          <li class="active"><a href="empleado.php"><img src="../images/1.1.png" alt="#"/> Empleado</a></li> 
+          <li class="active"><a href="empleado_director.php"><img src="../images/1.1.png" alt="#"/> Empleado</a></li> 
           <li><a href="crear_empleado_director.php"><img src="../images/1.2.png" alt="#"/> Crear</a></li>
             <li><a href="consultar_empleado_director.php"><img src="../images/1.2.png" alt="#"/> Consultar</a></li>
           </ul>

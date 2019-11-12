@@ -1,4 +1,3 @@
-
 <div class="row">
 <div class="col-xs-12 text-left">
     <br>
@@ -18,15 +17,14 @@
       </div>
     </div>
   </div>
- <div class="col-sm-9 text-left">
+  <div class="col-sm-9 text-left">
       <div id="login"> 
   <div class="container-fluid">
 <br>
       <?php
-      include_once('../includes/database.php');
+   include_once('../includes/database.php');
          $id=$_GET["id"];
-      $decodificado = base64_decode($id);
-   
+        $decodificado = base64_decode($id);
     $ok = listarPersonas( $conexion, $decodificado);
         function listarPersonas( $conexion, $decodificado )
         {
@@ -44,23 +42,24 @@
                         </label>
                          
 <input class='form-control' id='cedper' type='cedper'  placeholder='Cedula de identidad' name='cedper' required='' value='".$obj->cedper."' disabled>               
-";
+ ";
 echo"
 <label for='cla1' class='col-lg-3 control-label'>
                             Nombre:
                         </label>
                          
 <input class='form-control' id='cedper' type='cedper'  placeholder='Cedula de identidad' name='cedper' required='' value='".$obj->nombres."' disabled>               
- ";
-echo"
+";
+echo"<div class='form-group'>
 <label for='cla1' class='col-lg-3 control-label'>
                             Apellido:
                         </label>
-                        
+                         
 <input class='form-control' id='cedper' type='cedper'  placeholder='Cedula de identidad' name='cedper' required='' value='".$obj->apellido."' disabled>               
- ";
+";
+
                echo "</table><br><div class='well well-sm'><center>¿Seguro desea eliminar este empleado?</Center></div>
-            <center><a  href='../vista/postborrarempleado_director.php?id=".$codificado = base64_encode($obj->id_cedper)."' class='btn btn-success' role='button'>Si</a>
+            <center><a  href='../vista/postborrarempleado_director.php?id=".$codificado = base64_encode($obj->cedper)."' class='btn btn-success' role='button'>Si</a>
                <a  href='../vista/consultar_empleado_director.php' class='btn btn-danger role='button'>No</a></center></div>";
                echo "</div>";
               }
@@ -76,3 +75,5 @@ echo"
 
 </body>
 </html>
+
+

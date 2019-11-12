@@ -1,26 +1,57 @@
 <?php 
 
 if (isset($_POST))
-{              
+{ 
+           
 }
 include_once('../includes/database.php');
-		function listarHorario( $conexion, $codorg ){
+    function listarHorario( $conexion, $codorg ){
         list($depuniadm,$ofiuniadm,$minorguniadm,$uniuniadm,$prouniadm)= (explode('-',$_POST['sno_unidadadm']));
-		$sql = "SELECT *
-  FROM horario,sno_unidadadm WHERE horario.depuniadm='$depuniadm' and horario.ofiuniadm='$ofiuniadm' and horario.minorguniadm='$minorguniadm' and horario.uniuniadm='$uniuniadm' and horario.prouniadm='$prouniadm' and sno_unidadadm.depuniadm=horario.depuniadm and sno_unidadadm.ofiuniadm=horario.ofiuniadm and sno_unidadadm.minorguniadm=horario.minorguniadm and sno_unidadadm.uniuniadm=horario.uniuniadm and sno_unidadadm.prouniadm=horario.prouniadm;";
+    $sql = "  SELECT *
+  FROM horario,sno_unidadadm WHERE horario.depuniadm='$depuniadm' 
+  and horario.ofiuniadm='$ofiuniadm' 
+  and horario.minorguniadm='$minorguniadm'
+   and horario.uniuniadm='$uniuniadm' 
+   and horario.prouniadm='$prouniadm' and sno_unidadadm.depuniadm=horario.depuniadm and sno_unidadadm.ofiuniadm=horario.ofiuniadm and sno_unidadadm.minorguniadm=horario.minorguniadm and sno_unidadadm.uniuniadm=horario.uniuniadm and sno_unidadadm.prouniadm=horario.prouniadm";
+    $sql1 = "SELECT *
+  FROM sno_unidadadm 
+  WHERE 
+  sno_unidadadm.depuniadm='$depuniadm' 
+  and sno_unidadadm.ofiuniadm='$ofiuniadm' 
+  and sno_unidadadm.minorguniadm='$minorguniadm'
+   and sno_unidadadm.uniuniadm='$uniuniadm' 
+   and sno_unidadadm.prouniadm='$prouniadm'";
 
-		$ok = true;
+    $ok = true;
 
-		// Ejecutar la consulta:
-		$rs = pg_query( $conexion, $sql );
+    // Ejecutar la consulta:
+    $rs = pg_query( $conexion, $sql );
+       $rs1 = pg_query( $conexion, $sql1 );
 
-		if( $rs )
-		{
-			// Obtener el número de filas:
-			if( pg_num_rows($rs) > 0 )
+    if( $obj = pg_fetch_object($rs1))
+            {
+
+       
+           
+     echo "<br> <div class='col-sm-12'>
+
+      <div class='row'>
+      <div class='col-sm-12 form-group'>
+   Departamento:<input class='form-control' id='cedper' type='cedper'  placeholder='Cedula de identidad' name='cedper' required='' value='$obj->desuniadm' disabled >
+        </div>
+       </div>
+          ";
+                   
+            }
+
+    if( $rs )
+    {
+      if( pg_num_rows($rs) > 0 )
       {
-echo "<br><div class='container-fluid'>
-        <table class='table'>
+        echo "<div class='col-sm-12 text-right'>
+          <a target='_blank' href='../root/fpdf4.php?id=".$codificado =
+ base64_encode($_POST['sno_unidadadm'])."' class='btn btn-danger'>Exportar a PDF</a> <a href='../vista/consultar_horario_director.php' class='btn btn-info' role='button'>Volver</a></div>  <br> <br>     ";
+        echo " <table class='table'>
         <tr>
                                       <th>Horario</th>
                                         <th>Lunes</th>
@@ -36,9 +67,8 @@ echo "<br><div class='container-fluid'>
         // Recorrer el resource y mostrar los datos:
         while( $objFila = pg_fetch_object($rs) )
           echo "
-            <div class='container-fluid'>
             <tr class='table-primary'>
-         <td>".$objFila->deshor." </td>
+           <td>".$objFila->deshor." </td>
                 <td><b>Entrada:</b><br>".$objFila->lunes_e." <br> <b>Salida:</b><br>".$objFila->lunes_s." </td>
                <td><b>Entrada:</b><br>".$objFila->martes_e."<br> <b>Salida:</b><br>".$objFila->martes_s." </td>
                <td><b>Entrada:</b><br>".$objFila->miercoles_e."<br> <b>Salida:</b><br>".$objFila->miercoles_s." </td>
@@ -49,20 +79,26 @@ echo "<br><div class='container-fluid'>
                <TD><A HREF='../vista/modificarhorario_director.php?id=".$codificado = base64_encode($objFila->id_horario)."' title='Modificar'><IMG SRC='../images/navegador.png' ALT='modificar'></A>            
                       <A HREF='../vista/borrarhorario_director.php?id=".$codificado = base64_encode($objFila->id_horario)."' title='Borrar'><IMG SRC='../images/borrar.png' ALT='borrar'></A></TD>
                </tr></div>";
-               echo "</table><br><a href='../vista/consultar_horario_director.php' class='btn btn-info' role='button'>Volver</a></div> ";
+               echo "</table></div> ";
       }
-			else
-				echo "<br><div class='panel panel-danger'>
+      else
+      echo "<br><div class='panel panel-danger'>
       <div class='panel-heading'>No se encontraro horario<A HREF='../vista/consultar_horario_director.php' title='Modificar'><IMG align='right' SRC='../images/revisar.png' ALT='modificar'></A>";
-		}
-		else
-			$ok = false;
+    }
+    else
+      $ok = false;
 
-		return $ok;
-	}
+    return $ok;
+  }
+  // Modificar la persona:
+  list($depuniadm,$ofiuniadm,$minorguniadm,$uniuniadm,$prouniadm)= (explode('-',$_POST['sno_unidadadm']));
+  $ok = listarHorario( $conexion, $sno_unidadadm );
 
-	// Modificar la persona:
-	list($depuniadm,$ofiuniadm,$minorguniadm,$uniuniadm,$prouniadm)= (explode('-',$_POST['sno_unidadadm']));
-	$ok = listarHorario( $conexion, $sno_unidadadm );
+  
 
-	
+
+
+
+
+
+

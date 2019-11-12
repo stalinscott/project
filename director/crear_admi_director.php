@@ -5,7 +5,7 @@
         </div>
 </div>
         <div class="row">
-        <div class="col-sm-3 text-left">
+       <div class="col-sm-3 text-left">
 <div class="sidebar-nav">
       <div class="navbar navbar-default" role="navigation">
         <div class="navbar-collapse collapse sidebar-navbar-collapse">
@@ -55,9 +55,8 @@
                             Departamento a asignar:
                         </label>
                         <div class="col-lg-6">
-<select class="form-control" required="required" name="sno_unidadadm" id="sno_unidadadm">
-  <?php
-  include_once('../includes/conexion.php');
+                         <?php
+  include_once('../includes/database.php');
   ini_set("display_errors", "on");
   $depuniadm = $_SESSION['depuniadm'];
   $ofiuniadm = $_SESSION['ofiuniadm'];
@@ -69,11 +68,10 @@
   $ok = true;
   $rs = pg_query( $conexion, $sql );
   while( $objFila = pg_fetch_object($rs) ){
-  echo '<option value="'.$objFila->depuniadm.'-'.$objFila->ofiuniadm.'-'.$objFila->minorguniadm.'-'.$objFila->uniuniadm.'-'.$objFila->prouniadm.'">'.$objFila->desuniadm.'</option>';
+  echo '<input class="form-control" required="required" name="sno_unidadadm" id="sno_unidadadm" type="hidden" Value="'.$objFila->depuniadm.'-'.$objFila->ofiuniadm.'-'.$objFila->minorguniadm.'-'.$objFila->uniuniadm.'-'.$objFila->prouniadm.'">';
+  echo '<input class="form-control" required="required" name="sno_unidadadm1" id="sno_unidadadm1" type="text" Value="'.$objFila->desuniadm.'" placeholder="'.$objFila->desuniadm.'"" disabled>';
   };
   ?>
-  </select>
-  
 </div>
 </div>
 <div class="form-group">
