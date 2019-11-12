@@ -18,8 +18,9 @@
       </div>
     </div>
   </div>
-  <div class="col-sm-9 text-left">
+    <div class="col-sm-9 text-left">
       <h2  align="center">Bienvenido, <?= $_SESSION['nombres'];?> <?= $_SESSION['apellido'];?></h2>
+    </div>
     </div>
     </div>
 		</div>

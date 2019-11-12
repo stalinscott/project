@@ -1,11 +1,11 @@
 
 <div class="row">
 <div class="col-xs-12 text-left">
-		<br>
-		</div>
+    <br>
+    </div>
 </div>
-		<div class="row">
-		<div class="col-sm-3 text-left">
+    <div class="row">
+   <div class="col-sm-3 text-left">
 <div class="sidebar-nav">
       <div class="navbar navbar-default" role="navigation">
         <div class="navbar-collapse collapse sidebar-navbar-collapse">
@@ -18,12 +18,14 @@
     </div>
   </div>
   <div class="col-sm-9 text-left">
-  <h2  align="center">Consultar Empleado</h2>
-      <div id="login">        
+      <div class="panel-heading">
+        <h2  align="center">Consultar Empleado</h2>
+        </div>
+   <div id="login">        
 <div class='container-fluid'>
 <h2> Departamento:</h2>
-  <div class="form-group">
-      <div class="col-lg-6">
+            <div class="form-group">
+                           <div class="col-lg-6">
   <?php
   include_once('../includes/database.php');
   ini_set("display_errors", "on");
@@ -42,18 +44,17 @@
   };
   ?>
       </div>
-       <span >
+         
+        <span >
           <button type="submit"  class="btn btn-primary " type="button" onclick="loadLog()">Consultar</button>
-          </span>
-    </div>
-  
-</div>
-</div>
-<br>
-       
-            </div>
+          </span>   
         </div> 
-      
+        </div>
+        
+
+
+     </div>
+
 <script>
 
 
@@ -71,9 +72,7 @@ function loadLog() {
   xhttp.send("sno_unidadadm="+sno_unidadadm+"");
 }
 </script>
-
      </div>
-    </div>
     </div>
     </div>
     

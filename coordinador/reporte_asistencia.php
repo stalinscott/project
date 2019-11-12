@@ -5,7 +5,7 @@
     </div>
 </div>
     <div class="row">
-   <div class="col-sm-3 text-left">
+     <div class="col-sm-3 text-left">
 <div class="sidebar-nav">
       <div class="navbar navbar-default" role="navigation">
         <div class="navbar-collapse collapse sidebar-navbar-collapse">
@@ -20,23 +20,19 @@
     </div>
   </div>
   <div class="col-sm-9 text-left">
-  <div class="panel-heading">
-    <h2  align="center">Consultar Asistencias</h2>
-  </div>
- <ul class="nav nav-tabs">
-  <li class="active"><a href="../vista/consultar_asistencia_coordinador.php">Empleado</a></li>
-  <li><a href="../vista/reporte_asistencias_coordinador.php">Departamento</a></li>
+      <div class="panel-heading">
+        <h2  align="center">Consultar Asistencias</h2>
+        <ul class="nav nav-tabs">
+        <li ><a href="../vista/consultar_asistencia_coordinador.php">Empleado</a></li>
+  <li class="active"><a href="../vista/reporte_asistencias_coordinador.php">Departamento</a></li>
 </ul>
 <br>
-  <div id="login">        
-<div class='container-fluid'>
-            <div class="form-group">       
+   <div id="login">        
 <label for="cedper" class="col-lg-3 control-label">
-                            Cédula:
+                           Departamento:
                         </label>
-                   <div class="col-lg-6">
-<select class="form-control" required="required" name="cedper" id="cedper">
-  <?php
+<div class="col-lg-6 text-center">
+<?php
   include_once('../includes/database.php');
   ini_set("display_errors", "on");
   $depuniadm = $_SESSION['depuniadm'];
@@ -44,18 +40,18 @@
   $minorguniadm = $_SESSION['minorguniadm'];
   $uniuniadm = $_SESSION['uniuniadm'];
   $prouniadm = $_SESSION['prouniadm'];
-  $sql = "SELECT * FROM public.personal where personal.depuniadm='$depuniadm' and personal.ofiuniadm='$ofiuniadm' and personal.minorguniadm='$minorguniadm' and personal.uniuniadm='$uniuniadm' and personal.prouniadm='$prouniadm';";
+  $sql = "SELECT *
+  FROM public.sno_unidadadm where sno_unidadadm.depuniadm='$depuniadm' and sno_unidadadm.ofiuniadm='$ofiuniadm' and sno_unidadadm.minorguniadm='$minorguniadm' and sno_unidadadm.uniuniadm='$uniuniadm' and sno_unidadadm.prouniadm='$prouniadm'";
   $ok = true;
   $rs = pg_query( $conexion, $sql );
   while( $objFila = pg_fetch_object($rs) ){
-  echo '<option value="'.$objFila->cedper.'">'.$objFila->cedper.'-'.$objFila->nombres.' '.$objFila->apellido.'</option>';
+  echo '<input class="form-control" required="required" name="sno_unidadadm" id="sno_unidadadm" type="hidden" Value="'.$objFila->depuniadm.'-'.$objFila->ofiuniadm.'-'.$objFila->minorguniadm.'-'.$objFila->uniuniadm.'-'.$objFila->prouniadm.'">';
+  echo '<input class="form-control" required="required" name="sno_unidadadm1" id="sno_unidadadm1" type="text" Value="'.$objFila->desuniadm.'" placeholder="'.$objFila->desuniadm.'"" disabled>';
   };
   ?>
-  </select>
 </div>
 <br>
 <br>
-
 <label for="cedper" class="col-lg-3 control-label">
                            Rango de Fecha:
                         </label>
@@ -64,9 +60,9 @@
             <input id="fecha_actual" type="hidden"  placeholder="fecha_actual" name="fecha_actual" required="" value="<?php echo $fecha; ?> ">
             <div class="panel panel-default">
              <div class="panel-body">
-                   Desde:<input id="loginemail" type="text" class="tcal" name="email" required=""  onkeypress="return validarnumeros(event)">
+                   Desde:<input id="desde" type="text" class="tcal" name="email" required=""  onkeypress="return validarnumeros(event)">
             
-                <br>Hasta: <input id="loginpassword" type="text" class="tcal" name="password" required=""  onkeypress="return validarnumeros(event)">
+                <br>Hasta: <input id="hasta" type="text" class="tcal" name="password" required=""  onkeypress="return validarnumeros(event)">
            
             </div>
              </div>
@@ -80,64 +76,17 @@
              
         </div>  
         </div>
-        </div>
-        </div>  
-        </div>
-        </div>
-
-
-<script language="javascript">   
-function validarnumeros(e){
-    key=e.keycode || e.which;
-    teclado=String.fromCharCode(key);
-    numero="0123456789";
-    especiales="8-37-38-46";
-    teclado_especial=false;
-
-    for(var i in especiales){
-        if(key==especiales[i]){
-            teclado_especial=true;
-        }
-    }
-    if(numero.indexOf(teclado)==-1 && !teclado_especial){
-        return false;
-    }
-     
-}
-</script>
-
-<script>
-
-
-<script language="javascript">   
-function validarnumeros(e){
-    key=e.keycode || e.which;
-    teclado=String.fromCharCode(key);
-    numero="0123456789";
-    especiales="8-37-38-46";
-    teclado_especial=false;
-
-    for(var i in especiales){
-        if(key==especiales[i]){
-            teclado_especial=true;
-        }
-    }
-    if(numero.indexOf(teclado)==-1 && !teclado_especial){
-        return false;
-    }
-     
-}
-</script>
+        </div>     
 
 <script>
 
 
 function loadLog() {
-    var nombre= document.getElementById('loginemail').value;
-var clave= document.getElementById('loginpassword').value;
-var cedper= document.getElementById('cedper').value;
-var fecha_actual= document.getElementById('fecha_actual').value;
-if (nombre==0)
+    var sno_unidadadm= document.getElementById('sno_unidadadm').value;
+    var desde= document.getElementById('desde').value;
+    var hasta= document.getElementById('hasta').value;
+     var fecha_actual= document.getElementById('fecha_actual').value;
+    if (desde==0)
 
  {
     alert("Campo Desde esta vacio")
@@ -146,7 +95,7 @@ if (nombre==0)
     return 0;
   }
 
-          if (clave==0)
+          if (hasta==0)
 
  {
     alert("Compo Hasta esta vacio")
@@ -155,7 +104,7 @@ if (nombre==0)
     return 0;
   }
 
-  if (nombre>clave)
+  if (desde>hasta)
 
  {
     alert("La fecha ingresada en el campo Desde es mayor que la fecha ingresada en el campo Hasta")
@@ -164,26 +113,19 @@ if (nombre==0)
     return 0;
   }
 
-
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (xhttp.readyState == 4 && xhttp.status == 200) {
     document.getElementById("login").innerHTML = xhttp.responseText;
     }
   };
-    xhttp.open("POST", "../coordinador/postconsultarasistencia.php", true);
+    xhttp.open("POST", "../coordinador/postreporteasistencia.php", true);
   xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-  xhttp.send("email="+nombre+"&password="+clave+"&cedper="+cedper+"&fecha_actual="+fecha_actual+"");
+  xhttp.send("sno_unidadadm="+sno_unidadadm+"&fecha_actual="+fecha_actual+"&desde="+desde+"&hasta="+hasta+"");
 }
 </script>
-
-
-  
-
-
-   </table>
-    
-
+     </div>
+    </div>
     </div>
     
 
