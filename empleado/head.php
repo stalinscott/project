@@ -23,7 +23,7 @@ $fecha= date ("d/m/Y");
 	<link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="../bootstrap/css/style.css">
 	<link rel="stylesheet" type="text/css" href="../css/tcal.css">
-	<script type="text/javascript" src="../js/tcal.js"></script> >
+	<script type="text/javascript" src="../js/tcal.js"></script> 
 	<!-- IMPORTAMOS LOS ARCHIVOS JAVASCRIPT DEL FRAMEWORK DE BOOTSTRAP -->
 	<script type="text/javascript" src="../bootstrap/js/bootstrap.js"></script>
 	<script type="text/javascript" src="../bootstrap/js/bootstrap.min.js"></script>

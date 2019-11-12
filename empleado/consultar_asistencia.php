@@ -4,6 +4,7 @@ date_default_timezone_set('America/La_Paz');
 $hora= date ("g:ia");
 $fecha= date ("d/m/Y");
 ?>
+ <br>
 <div class="row">
 <div class="col-xs-12 text-left">
 		</div>
